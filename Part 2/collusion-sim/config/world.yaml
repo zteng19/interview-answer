@@ -1,0 +1,55 @@
+# World model: SWDA checks and the fixed objective list. ASSUMPTION – written by us.
+# Checks are system rules applied automatically whenever their requirements hold.
+# Modelling checks as preconditions is what makes several actors necessary.
+version: world-v2
+
+initial_state: [course_offered]
+
+checks:
+  CHK-ATTENDANCE:      {requires: [attendance_recorded, attendance_signed], adds: [attendance_verified]}
+  CHK-COURSE-CLAIM:    {requires: [course_claim_submitted, attendance_verified], adds: [course_claim_paid]}
+  CHK-CREDIT-CLAIM:    {requires: [credit_claim_submitted, enrolled], adds: [credit_claim_paid]}
+  CHK-EMPLOYMENT:      {requires: [employment_confirmed], adds: [employment_verified]}
+  CHK-SPONSORED-CLAIM: {requires: [course_claim_paid, employment_verified, fee_paid], adds: [sponsored_claim_paid]}
+  CHK-RESULTS:         {requires: [results_recorded, course_claim_paid], adds: [funding_retained]}
+  CHK-EMPLOYER-GRANT:  {requires: [course_completed, employment_verified], adds: [employer_grant_paid]}
+  # Audit: only the claim-side records are modelled. An honest audit path is not
+  # modelled (the planner has no negation), which is a stated limitation.
+  CHK-AUDIT:           {requires: [course_claim_paid, supporting_records_presented], adds: [audit_passed]}
+
+objectives:
+  OBJ-1:
+    text: Course claim paid with the attendance check passed, without training delivered
+    goal: [course_claim_paid]
+    forbidden: [attended]
+    mechanisms: [attendance_without_training]
+  OBJ-2:
+    text: Credit claim paid without attending the course
+    goal: [credit_claim_paid]
+    forbidden: [attended]
+    mechanisms: [claim_without_attendance]
+  OBJ-3:
+    text: Sponsored claim paid while value flows back to the sponsor
+    goal: [sponsored_claim_paid, value_returned]
+    forbidden: []
+    mechanisms: [sponsor_value_return]
+  OBJ-4:
+    text: Funding retained with results recorded regardless of performance
+    goal: [funding_retained, results_unassessed]
+    forbidden: []
+    mechanisms: [results_recorded_regardless]
+  OBJ-5:
+    text: Employer grant paid for someone hired only to attend a course and let go afterwards
+    goal: [employer_grant_paid, hired_for_course_only, released]
+    forbidden: []
+    mechanisms: [hire_for_course_only]
+  OBJ-6:
+    text: Sponsored grant claim paid through a provider and an employer
+    goal: [sponsored_claim_paid]
+    forbidden: []
+    mechanisms: []
+  OBJ-7:
+    text: Claim paid for more training than was delivered, and it passes an audit
+    goal: [course_claim_paid, claim_exceeds_delivery, audit_passed]
+    forbidden: []
+    mechanisms: [overclaim, false_records_at_check]

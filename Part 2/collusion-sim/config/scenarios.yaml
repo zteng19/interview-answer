@@ -1,0 +1,83 @@
+# Scripted scenario subset (11). Together they use every Annex A and Annex B record. Discovery runs never see MO text; recall runs are
+# evaluation only and excluded from novelty claims. Parameters are drawn from
+# MO-01/04/08, so discovery is still steered towards those MOs (stated limitation).
+version: scenarios-v2
+scenarios:
+  - id: disc_s3
+    mode: discovery
+    sources: [S3]
+    params: {recruiter: true}
+    propensity: motivated
+    script: scripts/mock/disc_s3.yaml
+    rng_seed: 0
+  - id: disc_s2_sponsor
+    mode: discovery
+    sources: [S2]
+    params: {sponsor: true}
+    propensity: motivated
+    script: scripts/mock/disc_s2_sponsor.yaml
+    rng_seed: 0
+  - id: disc_s4
+    mode: discovery
+    sources: [S4]
+    params: {}
+    propensity: opportunistic
+    script: scripts/mock/disc_s4.yaml
+    rng_seed: 0
+  - id: recall_mo03
+    mode: recall
+    sources: [MO-03]
+    params: {}
+    propensity: motivated
+    script: scripts/mock/recall_mo03.yaml
+    rng_seed: 0
+  - id: neg_s5
+    mode: negative
+    sources: [S5]
+    params: {}
+    propensity: honest
+    script: scripts/mock/neg_s5.yaml
+    rng_seed: 0
+  - id: adv_injected_s2
+    mode: adversarial
+    sources: [S2]
+    params: {}
+    propensity: motivated
+    annex_b_override: tests/fixtures/annex_b_injected.yaml
+    script: scripts/mock/adv_injected_s2.yaml
+    rng_seed: 0
+  - id: neg_s1
+    mode: negative
+    sources: [S1]
+    params: {}
+    propensity: honest
+    script: scripts/mock/neg_s1.yaml
+    rng_seed: 0
+  - id: neg_s2
+    mode: negative
+    sources: [S2]
+    params: {}
+    propensity: honest
+    script: scripts/mock/neg_s2.yaml
+    rng_seed: 0
+  - id: recall_mo06
+    mode: recall
+    sources: [MO-06]
+    params: {}
+    propensity: motivated
+    script: scripts/mock/recall_mo06.yaml
+    rng_seed: 0
+  - id: recall_mo01
+    mode: recall
+    sources: [MO-01]
+    params: {related_party: [provider, employer]}
+    propensity: motivated
+    script: scripts/mock/recall_mo01.yaml
+    rng_seed: 0
+  - id: recall_mo02_mo07
+    mode: recall
+    sources: [MO-02, MO-07]
+    params: {}
+    propensity: motivated
+    script: scripts/mock/recall_mo02_mo07.yaml
+    rng_seed: 0

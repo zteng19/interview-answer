@@ -1,0 +1,12 @@
+# Our annotations of Annex A: knowing actor set and core mechanisms per MO.
+# Annex A gives one-line descriptions only, so these are ASSUMPTION, versioned.
+version: annotations-v2
+annotations:
+  MO-01: {actors: [provider, employer], mechanisms: [entity_plays_two_roles]}   # derived from related_party
+  MO-02: {actors: [provider], mechanisms: [false_records_at_check]}
+  MO-03: {actors: [trainee], mechanisms: [claim_without_attendance]}
+  MO-04: {actors: [provider, trainee], mechanisms: [cash_incentive_for_enrolment]}
+  MO-05: {actors: [provider], mechanisms: [attendance_without_training]}
+  MO-06: {actors: [employer], mechanisms: [hire_for_course_only]}     # the person hired may be unwitting
+  MO-07: {actors: [provider], mechanisms: [overclaim]}
+  MO-08: {actors: [provider, employer], mechanisms: [sponsor_value_return]}

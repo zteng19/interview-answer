@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: collusion-sim
+Version: 0.1.0
+Summary: PoC: multi-agent collusion simulation producing simulated risk-pattern cards for human review
+Requires-Python: >=3.10
+Requires-Dist: pydantic<3,>=2.5
+Requires-Dist: PyYAML>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"

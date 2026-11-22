@@ -1,0 +1,11 @@
+version: run-v1
+limits:
+  max_rounds: 4            # R1–R3 plus one optional revision round (shared budget)
+  max_msgs_per_turn: 3     # send_message calls per actor per turn
+  max_chars: 800           # per message body / contribution text
+  max_retries: 2           # invalid output retries per turn; then the actor abstains → FAILED
+  turn_timeout_s: 30       # measured on the injected clock
+  run_timeout_s: 600
+  token_budget: 8000       # simulated tokens per run (len(json)/4)
+reviewers:
+  allowlist: [alice, bob]  # SSO groups in production

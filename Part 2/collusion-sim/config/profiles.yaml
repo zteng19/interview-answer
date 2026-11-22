@@ -1,0 +1,56 @@
+# Actor profiles and action library. Everything in this file is ASSUMPTION:
+# written by us at the same level of abstraction as Annex A, versioned, and
+# gate-checked in CI (tests/test_gate.py::test_action_library_passes_gate).
+version: profiles-v2
+
+roles:
+  trainee:
+    goals: Obtain course credits or a cash benefit for the least effort
+    knows: [own enrolment, own attendance, own payouts]
+    does_not_know: [records the provider files]
+    private_with: [provider, employer]
+  provider:
+    goals: Keep enrolments funded and fees paid
+    knows: [class records, assessments, claims filed]
+    does_not_know: [employer payroll]
+    private_with: [trainee, employer]
+  employer:
+    goals: Lower staff costs and obtain grant or sponsorship benefits
+    knows: [payroll, grant disbursements]
+    does_not_know: [class records]
+    private_with: [trainee, provider]
+
+# Each action: owner, preconditions, effects, can_be_unwitting, mechanisms.
+# Mechanism tags link actions to our MO annotations (config/mo_annotations.yaml).
+actions:
+  enrol:            {actor: trainee,  pre: [course_offered], eff: [enrolled], can_be_unwitting: true}
+  attend:           {actor: trainee,  pre: [enrolled], eff: [attended, attendance_signed], can_be_unwitting: true}
+  confirm_attendance_without_attending:
+                    {actor: trainee,  pre: [enrolled], eff: [attendance_signed], mechanisms: [attendance_without_training]}
+  submit_credit_claim: {actor: trainee, pre: [enrolled], eff: [credit_claim_submitted]}
+  refer_peers:      {actor: trainee,  pre: [recruiter_engaged], eff: [referrals_made], can_be_unwitting: true}
+
+  run_course:       {actor: provider, pre: [], eff: [course_offered]}
+  engage_recruiter: {actor: provider, pre: [], eff: [recruiter_engaged]}
+  offer_cash_for_enrolment:
+                    {actor: provider, pre: [recruiter_engaged], eff: [cash_incentive_offered], mechanisms: [cash_incentive_for_enrolment]}
+  record_attendance: {actor: provider, pre: [enrolled], eff: [attendance_recorded]}
+  record_results:   {actor: provider, pre: [enrolled], eff: [results_recorded]}
+  record_results_regardless_of_performance:
+                    {actor: provider, pre: [enrolled], eff: [results_recorded, results_unassessed], mechanisms: [results_recorded_regardless]}
+  submit_course_claim: {actor: provider, pre: [enrolled, attendance_recorded], eff: [course_claim_submitted]}
+  deliver_course:   {actor: provider, pre: [enrolled, attended], eff: [course_completed], can_be_unwitting: true}
+  claim_more_than_delivered:
+                    {actor: provider, pre: [enrolled, attendance_recorded], eff: [course_claim_submitted, claim_exceeds_delivery], mechanisms: [overclaim]}
+  present_false_records_at_audit:
+                    {actor: provider, pre: [course_claim_submitted], eff: [supporting_records_presented], mechanisms: [false_records_at_check]}
+  return_value_to_sponsor:
+                    {actor: provider, pre: [fee_paid], eff: [value_returned], mechanisms: [sponsor_value_return]}
+
+  hire:             {actor: employer, pre: [], eff: [employed]}
+  hire_only_for_course:
+                    {actor: employer, pre: [], eff: [employed, hired_for_course_only], mechanisms: [hire_for_course_only]}
+  release_after_course: {actor: employer, pre: [employed, course_completed], eff: [released]}
+  sponsor_fee:      {actor: employer, pre: [enrolled], eff: [fee_paid]}
+  confirm_employment: {actor: employer, pre: [employed], eff: [employment_confirmed]}
+  receive_disbursement: {actor: employer, pre: [sponsored_claim_paid], eff: [disbursement_received]}
