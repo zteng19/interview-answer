@@ -1,0 +1,449 @@
+{
+  "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+  "card_type": "collusion",
+  "pattern_id": "PC-disc_s2_sponsor-P1",
+  "parent_pattern_id": null,
+  "run_id": "disc_s2_sponsor-seed0",
+  "scenario_id": "disc_s2_sponsor",
+  "scenario_mode": "discovery",
+  "versions": {
+    "schema": "card-v1",
+    "profiles": "profiles-v2",
+    "world": "world-v2",
+    "annotations": "annotations-v2",
+    "run": "run-v1"
+  },
+  "objective_id": "OBJ-3",
+  "objective_text": "Sponsored claim paid while value flows back to the sponsor",
+  "initial_state": [
+    "course_offered"
+  ],
+  "participants": [
+    {
+      "actor": "employer",
+      "role": "colluder",
+      "victim": false
+    },
+    {
+      "actor": "provider",
+      "role": "colluder",
+      "victim": false
+    },
+    {
+      "actor": "trainee",
+      "role": "unwitting",
+      "victim": false
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "actor": "trainee",
+      "action": "enrol",
+      "text": "Trainee is enrolled in the sponsored course",
+      "preconditions": [
+        "course_offered"
+      ],
+      "effects": [
+        "enrolled"
+      ],
+      "mechanisms": [],
+      "unwitting": true,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 15
+    },
+    {
+      "index": 1,
+      "actor": "provider",
+      "action": "record_attendance",
+      "text": "Provider records attendance for the sponsored trainee",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "attendance_recorded"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 12
+    },
+    {
+      "index": 2,
+      "actor": "provider",
+      "action": "submit_course_claim",
+      "text": "Provider submits the course claim for the sponsored enrolment",
+      "preconditions": [
+        "enrolled",
+        "attendance_recorded"
+      ],
+      "effects": [
+        "course_claim_submitted"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 13
+    },
+    {
+      "index": 3,
+      "actor": "trainee",
+      "action": "attend",
+      "text": "Trainee attends the course",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "attended",
+        "attendance_signed"
+      ],
+      "mechanisms": [],
+      "unwitting": true,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 16
+    },
+    {
+      "index": 4,
+      "actor": "employer",
+      "action": "hire",
+      "text": "Employer hires the trainee",
+      "preconditions": [],
+      "effects": [
+        "employed"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 24
+    },
+    {
+      "index": 5,
+      "actor": "employer",
+      "action": "confirm_employment",
+      "text": "Employer confirms the trainee's employment",
+      "preconditions": [
+        "employed"
+      ],
+      "effects": [
+        "employment_confirmed"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 25
+    },
+    {
+      "index": 6,
+      "actor": "employer",
+      "action": "sponsor_fee",
+      "text": "Employer sponsors the nett course fee",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "fee_paid"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 26
+    },
+    {
+      "index": 7,
+      "actor": "provider",
+      "action": "return_value_to_sponsor",
+      "text": "Provider passes part of the fee value back to the sponsor",
+      "preconditions": [
+        "fee_paid"
+      ],
+      "effects": [
+        "value_returned"
+      ],
+      "mechanisms": [
+        "sponsor_value_return"
+      ],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 14
+    }
+  ],
+  "flows": [
+    {
+      "from": "employer",
+      "to": "provider",
+      "type": "money",
+      "description": "Sponsor pays the nett fee",
+      "visibility": "proposal",
+      "origin": "SIMULATED",
+      "trace_ref": 26
+    },
+    {
+      "from": "provider",
+      "to": "employer",
+      "type": "value",
+      "description": "Part of the fee value returned to the sponsor",
+      "visibility": "private_side_agreement",
+      "origin": "SIMULATED",
+      "trace_ref": 18
+    }
+  ],
+  "benefits": [
+    {
+      "actor": "employer",
+      "description": "Value returned through the provider",
+      "origin": "SIMULATED"
+    },
+    {
+      "actor": "provider",
+      "description": "Secures the sponsored enrolment and its fee",
+      "origin": "SIMULATED"
+    }
+  ],
+  "feasible_subsets": [
+    [
+      "provider",
+      "employer"
+    ]
+  ],
+  "feasible_subsets_origin": "ASSUMPTION",
+  "related_party": [],
+  "effective_subsets": [
+    [
+      "employer",
+      "provider"
+    ]
+  ],
+  "statements": [
+    {
+      "text": "Trainee is enrolled in the sponsored course",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:enrol"
+      ],
+      "trace_ref": 15
+    },
+    {
+      "text": "Provider records attendance for the sponsored trainee",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:record_attendance"
+      ],
+      "trace_ref": 12
+    },
+    {
+      "text": "Almost $600 for basic cleaning training",
+      "origin": "SOURCE",
+      "author": "us",
+      "source_id": "S2",
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "Provider submits the course claim for the sponsored enrolment",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [
+        {
+          "source_id": "S2",
+          "span": "Almost $600 for basic cleaning training",
+          "verdict": "partial",
+          "note": null
+        }
+      ],
+      "depends_on_assumptions": [
+        "action:submit_course_claim"
+      ],
+      "trace_ref": 13
+    },
+    {
+      "text": "Trainee attends the course",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:attend"
+      ],
+      "trace_ref": 16
+    },
+    {
+      "text": "Employer hires the trainee",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:hire"
+      ],
+      "trace_ref": 24
+    },
+    {
+      "text": "Employer confirms the trainee's employment",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:confirm_employment"
+      ],
+      "trace_ref": 25
+    },
+    {
+      "text": "Employer sponsors the nett course fee",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:sponsor_fee"
+      ],
+      "trace_ref": 26
+    },
+    {
+      "text": "Provider passes part of the fee value back to the sponsor",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:return_value_to_sponsor"
+      ],
+      "trace_ref": 14
+    },
+    {
+      "text": "employer goal (profile): Lower staff costs and obtain grant or sponsorship benefits",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "provider goal (profile): Keep enrolments funded and fees paid",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    }
+  ],
+  "assumptions": [
+    "Objective OBJ-3: Sponsored claim paid while value flows back to the sponsor (world world-v2)",
+    "Preconditions, effects and SWDA checks come from our action library and world model",
+    "MO annotations annotations-v2 are our interpretation of Annex A",
+    "feasible_subsets is derived from the action library, not from agent behaviour"
+  ],
+  "mo_matches": [
+    {
+      "mo_id": "MO-08",
+      "relation": "known",
+      "basis": "Policy risk"
+    }
+  ],
+  "novelty": "known",
+  "source_support": 0,
+  "realism": {
+    "passed": true,
+    "codes": []
+  },
+  "screening_signals": [
+    {
+      "text": "Sponsored enrolments where fee levels are high relative to course content",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "data_needed_for_testing": [
+    {
+      "text": "Sponsor fee payments alongside provider payments to the same sponsor",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    },
+    {
+      "text": "Employment records for sponsored trainees around course dates",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "review_notes": [
+    "S2 only questions the fee level; it does not show value flowing back"
+  ],
+  "safety_gate": {
+    "stage": "full",
+    "blocked": false,
+    "codes": [],
+    "classifier": {
+      "result": "pass",
+      "demonstrated": false
+    }
+  },
+  "built_by": "pipeline",
+  "status": "pending_human_review"
+}

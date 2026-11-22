@@ -1,0 +1,1 @@
+{"pattern_id": "PC-disc_s3-P1", "status": "approved_for_testing", "card_sha256": "cba81a7d7edab18249d94ebeb741684fb20a39cfca52a2d90c81df149ab7ee70", "novelty": "variation", "reviewers": ["alice"], "weakened_control": true, "note": "Hypothesis only: back-test on historical claims and review fairness before any screening rule"}

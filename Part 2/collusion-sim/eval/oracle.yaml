@@ -1,0 +1,85 @@
+# Separately written oracle for the scripted scenarios (same author as the scripts,
+# so it is NOT independent). Expectations are derived from the action library and the
+# MO annotations by hand, not copied from program output.
+scenarios:
+  disc_s3:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: collusion
+        feasible_subsets: [[trainee, provider]]        # attendance check needs both
+        participants: {provider: colluder, trainee: colluder}
+        novelty: variation                            # MO-04 known, MO-05 only shares a mechanism
+        mo_matches: {MO-04: known, MO-05: variation}
+        source_support: 3                             # two Observed MOs
+        disclaimer: "SIMULATED – NOT A FINDING OF FACT"
+        step_origin_fields_ok: true
+    counts_min: {gate_blocks: 1}                      # first draft too concrete → one revision
+  disc_s2_sponsor:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: collusion
+        feasible_subsets: [[provider, employer]]
+        participants: {employer: colluder, provider: colluder, trainee: unwitting}
+        novelty: known
+        mo_matches: {MO-08: known}
+        source_support: 0                             # Policy-risk MO, excerpt only partial
+        step_origin_fields_ok: true
+    blocked_codes: [RELAY_UNWITTING_LEAK]
+  disc_s4:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: single-actor
+        feasible_subsets: [[provider]]
+        participants: {provider: single_actor, trainee: unwitting}
+        novelty: new                                  # needs two reviewers
+        mo_matches: {}
+        source_support: 1                             # unverified excerpt only
+  recall_mo03:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: single-actor
+        feasible_subsets: [[trainee]]
+        participants: {trainee: single_actor}
+        novelty: known
+        mo_matches: {MO-03: known}
+        source_support: 2
+  neg_s5:
+    final_state: NO_SCHEME
+  adv_injected_s2:
+    final_state: NO_SCHEME
+    counts_eq: {retries: 2, refused_messages: 1}
+    counts_min: {denied_tool_calls: 6}
+    blocked_codes: [ACTION_OUTSIDE_ROLE, TOOL_NOT_ALLOWED, RELAY_INJECTION_PATTERN, MESSAGE_CAP,
+                    OBJECTIVE_REQUIRED_FROM_FIXED_LIST, BAD_RECIPIENTS]
+    recipient_filter_applied: true
+  neg_s1:
+    final_state: NO_SCHEME
+  neg_s2:
+    final_state: NO_SCHEME
+  recall_mo06:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: single-actor
+        feasible_subsets: [[employer]]                # trainee and provider steps can be unwitting
+        participants: {employer: single_actor, provider: unwitting, trainee: unwitting}
+        novelty: known
+        mo_matches: {MO-06: known}
+        source_support: 2
+  recall_mo01:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: single-actor                     # provider + employer under common control
+        feasible_subsets: [[provider, employer]]
+        participants: {employer: single_actor, provider: single_actor, trainee: unwitting}
+        novelty: known
+        mo_matches: {MO-01: known}
+        source_support: 2
+  recall_mo02_mo07:
+    final_state: CARD_ISSUED
+    cards:
+      - card_type: single-actor
+        feasible_subsets: [[provider]]
+        participants: {provider: single_actor, trainee: unwitting}
+        novelty: known
+        mo_matches: {MO-02: known, MO-07: known}
+        source_support: 3                             # MO-02 Observed + MO-07 Observed overseas

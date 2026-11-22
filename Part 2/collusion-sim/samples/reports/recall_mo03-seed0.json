@@ -1,0 +1,22 @@
+{
+  "run_id": "recall_mo03-seed0",
+  "scenario_id": "recall_mo03",
+  "final_state": "CARD_ISSUED",
+  "rounds_used": 3,
+  "counts": {
+    "agent_calls": 9,
+    "messages_sent": 0,
+    "messages_delivered": 0,
+    "tool_calls": 5,
+    "denied_tool_calls": 0,
+    "refused_messages": 0,
+    "retries": 0,
+    "gate_blocks": 0,
+    "simulated_tokens": 196
+  },
+  "reason_codes": [],
+  "card_ids": [
+    "PC-recall_mo03-P1"
+  ],
+  "trace_ref": "traces/recall_mo03-seed0.jsonl"
+}

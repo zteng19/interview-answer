@@ -1,0 +1,302 @@
+{
+  "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+  "card_type": "single-actor",
+  "pattern_id": "PC-disc_s4-P1",
+  "parent_pattern_id": null,
+  "run_id": "disc_s4-seed0",
+  "scenario_id": "disc_s4",
+  "scenario_mode": "discovery",
+  "versions": {
+    "schema": "card-v1",
+    "profiles": "profiles-v2",
+    "world": "world-v2",
+    "annotations": "annotations-v2",
+    "run": "run-v1"
+  },
+  "objective_id": "OBJ-4",
+  "objective_text": "Funding retained with results recorded regardless of performance",
+  "initial_state": [
+    "course_offered"
+  ],
+  "participants": [
+    {
+      "actor": "provider",
+      "role": "single_actor",
+      "victim": false
+    },
+    {
+      "actor": "trainee",
+      "role": "unwitting",
+      "victim": false
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "actor": "trainee",
+      "action": "enrol",
+      "text": "Trainee enrols",
+      "preconditions": [
+        "course_offered"
+      ],
+      "effects": [
+        "enrolled"
+      ],
+      "mechanisms": [],
+      "unwitting": true,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 13
+    },
+    {
+      "index": 1,
+      "actor": "provider",
+      "action": "record_results_regardless_of_performance",
+      "text": "Provider records passing results regardless of performance",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "results_recorded",
+        "results_unassessed"
+      ],
+      "mechanisms": [
+        "results_recorded_regardless"
+      ],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 10
+    },
+    {
+      "index": 2,
+      "actor": "provider",
+      "action": "record_attendance",
+      "text": "Provider records attendance",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "attendance_recorded"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 11
+    },
+    {
+      "index": 3,
+      "actor": "provider",
+      "action": "submit_course_claim",
+      "text": "Provider submits the course claim",
+      "preconditions": [
+        "enrolled",
+        "attendance_recorded"
+      ],
+      "effects": [
+        "course_claim_submitted"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 12
+    },
+    {
+      "index": 4,
+      "actor": "trainee",
+      "action": "attend",
+      "text": "Trainee attends",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "attended",
+        "attendance_signed"
+      ],
+      "mechanisms": [],
+      "unwitting": true,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 14
+    }
+  ],
+  "flows": [],
+  "benefits": [
+    {
+      "actor": "provider",
+      "description": "Funding retained by keeping pass rates high",
+      "origin": "SIMULATED"
+    }
+  ],
+  "feasible_subsets": [
+    [
+      "provider"
+    ]
+  ],
+  "feasible_subsets_origin": "ASSUMPTION",
+  "related_party": [],
+  "effective_subsets": [
+    [
+      "provider"
+    ]
+  ],
+  "statements": [
+    {
+      "text": "Trainee enrols",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:enrol"
+      ],
+      "trace_ref": 13
+    },
+    {
+      "text": "Nobody in my class ever fails",
+      "origin": "SOURCE",
+      "author": "us",
+      "source_id": "S4",
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "Provider records passing results regardless of performance",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [
+        {
+          "source_id": "S4",
+          "span": "Nobody in my class ever fails",
+          "verdict": "supports",
+          "note": null
+        }
+      ],
+      "depends_on_assumptions": [
+        "action:record_results_regardless_of_performance"
+      ],
+      "trace_ref": 10
+    },
+    {
+      "text": "Provider records attendance",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:record_attendance"
+      ],
+      "trace_ref": 11
+    },
+    {
+      "text": "Provider submits the course claim",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:submit_course_claim"
+      ],
+      "trace_ref": 12
+    },
+    {
+      "text": "Trainee attends",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:attend"
+      ],
+      "trace_ref": 14
+    },
+    {
+      "text": "provider goal (profile): Keep enrolments funded and fees paid",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    }
+  ],
+  "assumptions": [
+    "Objective OBJ-4: Funding retained with results recorded regardless of performance (world world-v2)",
+    "Preconditions, effects and SWDA checks come from our action library and world model",
+    "MO annotations annotations-v2 are our interpretation of Annex A",
+    "feasible_subsets is derived from the action library, not from agent behaviour"
+  ],
+  "mo_matches": [],
+  "novelty": "new",
+  "source_support": 1,
+  "realism": {
+    "passed": true,
+    "codes": []
+  },
+  "screening_signals": [
+    {
+      "text": "Courses where pass rates stay near 100% across many intakes",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "data_needed_for_testing": [
+    {
+      "text": "Assessment results by course and intake alongside claim submissions",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "review_notes": [
+    "NEW pattern: flagged 'emerging, low evidence'; needs two reviewers"
+  ],
+  "safety_gate": {
+    "stage": "full",
+    "blocked": false,
+    "codes": [],
+    "classifier": {
+      "result": "pass",
+      "demonstrated": false
+    }
+  },
+  "built_by": "pipeline",
+  "status": "pending_human_review"
+}

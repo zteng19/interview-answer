@@ -1,0 +1,1 @@
+{"pattern_id":"PC-disc_s3-P1","card_sha256":"cba81a7d7edab18249d94ebeb741684fb20a39cfca52a2d90c81df149ab7ee70","decision":"approve_for_testing","reviewer":"alice","weakened_control":true,"citations_checked":["MO-04","MO-05","S3"],"rationale":"Opened S3, MO-04, MO-05","reviewer_codes":[],"timestamp":"2026-11-22T15:20:43.282956+00:00"}

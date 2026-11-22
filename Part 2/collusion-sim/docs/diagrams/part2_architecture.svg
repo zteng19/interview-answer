@@ -1,0 +1,1114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2700" height="1800" viewBox="0 0 2700 1800">
+<defs>
+<marker id="a-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f6fb2"/></marker>
+<marker id="a-control" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+<marker id="a-trace" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7f8c8d"/></marker>
+<marker id="a-human" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6c3483"/></marker>
+</defs>
+<rect width="2700" height="1800" fill="white"/>
+<text x="1350.0" y="36" font-family="Helvetica, Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" font-style="normal" fill="#1b2631">
+<tspan x="1350.0" dy="0">Part 2 – Multi-agent Collusion Simulation: Logical Architecture</tspan>
+</text>
+<text x="1350.0" y="60" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="middle" font-weight="normal" font-style="normal" fill="#566573">
+<tspan x="1350.0" dy="0">Badges = brief points 1–10  ·  orchestrator, builder, checks and gate are deterministic code  ·  agents never talk directly  ·  outputs are simulated risk patterns, never findings of fact</tspan>
+</text>
+<rect x="30" y="95" width="430" height="218" rx="6" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<text x="42" y="117" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#2c3e50">
+<tspan x="42" dy="0">Actor profiles (YAML, versioned)</tspan>
+</text>
+<rect x="430" y="102" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="441.0" y="117.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="441.0" dy="0">1</tspan>
+</text>
+<text x="44" y="139" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Goals and incentives per role</tspan>
+</text>
+<text x="44" y="156.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Action library: preconditions → effects,</tspan>
+</text>
+<text x="56" y="174.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">can_be_unwitting flag (checked on args)</tspan>
+</text>
+<text x="44" y="191.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Scenario knowledge: what records each role</tspan>
+</text>
+<text x="56" y="209.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">sees and does not see</tspan>
+</text>
+<text x="44" y="226.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Allowed channels and recipients</tspan>
+</text>
+<text x="44" y="244.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Profile content enters cards as ASSUMPTION</tspan>
+</text>
+<rect x="30" y="322" width="430" height="235" rx="6" fill="white" stroke="#2c3e50" stroke-width="2"/>
+<text x="42" y="344" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#2c3e50">
+<tspan x="42" dy="0">Scenarios &amp; run config</tspan>
+</text>
+<rect x="430" y="329" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="441.0" y="344.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="441.0" dy="0">8</tspan>
+</text>
+<text x="44" y="366" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Discovery: S1…S5 singly and in pairs + params</tspan>
+</text>
+<text x="56" y="383.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">(related-party owner, recruiter, sponsor);</tspan>
+</text>
+<text x="56" y="401.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">actors never see MO text</tspan>
+</text>
+<text x="44" y="418.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Recall (eval only): MO and MO-combo scenarios</tspan>
+</text>
+<text x="44" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Negative controls: S5, S1, S2 → expect NO_SCHEME</tspan>
+</text>
+<text x="44" y="453.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Limits: 4 rounds · ≤3 msgs per actor per turn</tspan>
+</text>
+<text x="56" y="471.0" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">· ≤800 chars · retries ≤2 · 30 s per turn</tspan>
+</text>
+<text x="56" y="488.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">· 10 min per run · simulated tokens · rng_seed</tspan>
+</text>
+<rect x="30" y="565" width="430" height="270" rx="6" fill="#fdedec" stroke="#c0392b" stroke-width="2.2" stroke-dasharray="8,5"/>
+<text x="42" y="588" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="42" dy="0">UNTRUSTED INPUTS – data, never instructions</tspan>
+</text>
+<rect x="46" y="600" width="398" height="105" rx="6" fill="white" stroke="#922b21" stroke-width="2"/>
+<text x="58" y="622" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#922b21">
+<tspan x="58" dy="0">Annex A – MO library</tspan>
+</text>
+<text x="60" y="644" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="60" dy="0">MO-01…08: MO, pattern, basis (Observed /</tspan>
+</text>
+<text x="60" y="661.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="60" dy="0">Observed overseas / Policy risk)</tspan>
+</text>
+<rect x="46" y="718" width="398" height="105" rx="6" fill="white" stroke="#922b21" stroke-width="2"/>
+<text x="58" y="740" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#922b21">
+<tspan x="58" dy="0">Annex B – social media excerpts</tspan>
+</text>
+<text x="60" y="762" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="60" dy="0">S1…S5: composite, unverified</tspan>
+</text>
+<text x="60" y="779.5" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="60" dy="0">may contain hidden instructions</tspan>
+</text>
+<rect x="30" y="850" width="430" height="205" rx="6" fill="white" stroke="#c0392b" stroke-width="2"/>
+<text x="42" y="872" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="42" dy="0">Input sanitiser &amp; source register</tspan>
+</text>
+<rect x="430" y="857" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="441.0" y="872.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="441.0" dy="0">9</tspan>
+</text>
+<text x="44" y="894" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• SHA-256 of raw AND normalised text</tspan>
+</text>
+<text x="44" y="911.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Basis kept verbatim (incl. Observed overseas)</tspan>
+</text>
+<text x="44" y="928.4000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Source text kept in data fields, apart from</tspan>
+</text>
+<text x="56" y="945.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">instructions: reduces injection risk, cannot</tspan>
+</text>
+<text x="56" y="962.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">prevent it (LLMs have no hard boundary)</tspan>
+</text>
+<text x="44" y="980.0000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Heuristic flags → trace; flagged spans never</tspan>
+</text>
+<text x="56" y="997.2000000000003" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">quoted into cards (ID reference only)</tspan>
+</text>
+<rect x="30" y="1070" width="430" height="175" rx="6" fill="white" stroke="#1f6fb2" stroke-width="2"/>
+<text x="42" y="1092" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#1f6fb2">
+<tspan x="42" dy="0">Source store (read-only)</tspan>
+</text>
+<rect x="430" y="1077" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="441.0" y="1092.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="441.0" dy="0">6</tspan>
+</text>
+<text x="44" y="1114" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• SourceRecord {id, raw, normalised, hashes,</tspan>
+</text>
+<text x="56" y="1131.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">basis, flags}</tspan>
+</text>
+<text x="44" y="1148.4" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• MO annotations (actor set, core mechanisms):</tspan>
+</text>
+<text x="56" y="1165.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="56" dy="0">authored by us, versioned, = ASSUMPTION</tspan>
+</text>
+<text x="44" y="1182.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Annex B text → scenario builder (as data)</tspan>
+</text>
+<text x="44" y="1200.0000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Annex A + annotations → Review Agent only</tspan>
+</text>
+<polyline points="245,823 245,848" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<polyline points="245,1055 245,1068" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<rect x="490" y="95" width="1220" height="1395" rx="6" fill="#f8f9f9" stroke="#2c3e50" stroke-width="2.2" stroke-dasharray="10,6"/>
+<text x="504" y="116" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="start" font-weight="bold" font-style="normal" fill="#2c3e50">
+<tspan x="504" dy="0">SIMULATION SANDBOX – agents have no network, file or tool access except through the orchestrator</tspan>
+</text>
+<rect x="510" y="130" width="1180" height="420" rx="6" fill="white" stroke="#c0392b" stroke-width="2.5"/>
+<text x="524" y="154" font-family="Helvetica, Arial, sans-serif" font-size="15" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="524" dy="0">Orchestrator (deterministic code – not an LLM)</tspan>
+</text>
+<rect x="1630" y="137" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1641.0" y="152.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1641.0" dy="0">2</tspan>
+</text>
+<rect x="525" y="170" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="533" y="188" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="533" dy="0">Scenario builder</tspan>
+</text>
+<text x="533" y="205" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="533" dy="0">scenario → role briefs</tspan>
+</text>
+<rect x="724" y="174" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="735.0" y="189.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="735.0" dy="0">2</tspan>
+</text>
+<rect x="758" y="170" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="766" y="188" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="766" dy="0">Turn scheduler</tspan>
+</text>
+<text x="766" y="205" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="766" dy="0">round-robin, rotated</tspan>
+</text>
+<rect x="957" y="174" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="968.0" y="189.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="968.0" dy="0">2</tspan>
+</text>
+<rect x="991" y="170" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="999" y="188" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="999" dy="0">Message bus</tspan>
+</text>
+<text x="999" y="205" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="999" dy="0">public + private channels</tspan>
+</text>
+<rect x="1190" y="174" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1201.0" y="189.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1201.0" dy="0">2</tspan>
+</text>
+<rect x="1224" y="170" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="1232" y="188" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1232" dy="0">Recipient filter</tspan>
+</text>
+<text x="1232" y="205" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1232" dy="0">strips unseen quotes / IDs</tspan>
+</text>
+<rect x="1423" y="174" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1434.0" y="189.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1434.0" dy="0">3</tspan>
+</text>
+<rect x="1457" y="170" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="1465" y="188" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1465" dy="0">Policy enforcer</tspan>
+</text>
+<text x="1465" y="205" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1465" dy="0">tool + argument checks</tspan>
+</text>
+<rect x="1656" y="174" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1667.0" y="189.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1667.0" dy="0">3</tspan>
+</text>
+<rect x="525" y="230" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="533" y="248" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="533" dy="0">Schema validator</tspan>
+</text>
+<text x="533" y="265" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="533" dy="0">retry ≤2 → run FAILED</tspan>
+</text>
+<rect x="724" y="234" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="735.0" y="249.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="735.0" dy="0">8</tspan>
+</text>
+<rect x="758" y="230" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="766" y="248" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="766" dy="0">Budget guard</tspan>
+</text>
+<text x="766" y="265" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="766" dy="0">rounds · msgs · time · tokens</tspan>
+</text>
+<rect x="957" y="234" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="968.0" y="249.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="968.0" dy="0">8</tspan>
+</text>
+<rect x="991" y="230" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="999" y="248" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="999" dy="0">Relay checks</tspan>
+</text>
+<text x="999" y="265" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="999" dy="0">content rules on every relay</tspan>
+</text>
+<rect x="1190" y="234" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1201.0" y="249.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1201.0" dy="0">9</tspan>
+</text>
+<rect x="1224" y="230" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="1232" y="248" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1232" dy="0">Commit rule</tspan>
+</text>
+<text x="1232" y="265" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1232" dy="0">see rule below</tspan>
+</text>
+<rect x="1423" y="234" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1434.0" y="249.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1434.0" dy="0">2</tspan>
+</text>
+<rect x="1457" y="230" width="225" height="52" rx="5" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="1465" y="248" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1465" dy="0">Trace emitter</tspan>
+</text>
+<text x="1465" y="265" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1465" dy="0">events + spans</tspan>
+</text>
+<rect x="1648" y="234" width="30" height="22" rx="11" fill="#1b2631"/>
+<text x="1663.0" y="249.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1663.0" dy="0">10</tspan>
+</text>
+<text x="525" y="305" font-family="Helvetica, Arial, sans-serif" font-size="12.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="525" dy="0">Simulation rounds (shared budget: max 4)</tspan>
+</text>
+<rect x="525" y="315" width="278" height="80" rx="8" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="535" y="334" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="535" dy="0">R1 – propose</tspan>
+</text>
+<text x="535" y="353" font-family="Helvetica, Arial, sans-serif" font-size="10.8" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="535" dy="0">offers drafted privately, all</tspan>
+<tspan x="535" dy="13.8">revealed together at round end</tspan>
+</text>
+<polyline points="803,355 813,355" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<rect x="815" y="315" width="278" height="80" rx="8" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="825" y="334" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="825" dy="0">R2 – negotiate</tspan>
+</text>
+<text x="825" y="353" font-family="Helvetica, Arial, sans-serif" font-size="10.8" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="825" dy="0">public + private messages,</tspan>
+<tspan x="825" dy="13.8">all via the bus</tspan>
+</text>
+<polyline points="1093,355 1103,355" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<rect x="1105" y="315" width="278" height="80" rx="8" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3"/>
+<text x="1115" y="334" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1115" dy="0">R3 – commit</tspan>
+</text>
+<text x="1115" y="353" font-family="Helvetica, Arial, sans-serif" font-size="10.8" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1115" dy="0">accept / decline a proposal_id,</tspan>
+<tspan x="1115" dy="13.8">or commit a solo scheme</tspan>
+</text>
+<polyline points="1383,355 1393,355" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<rect x="1395" y="315" width="278" height="80" rx="8" fill="#fdf2f0" stroke="#c0392b" stroke-width="1.3" stroke-dasharray="6,4"/>
+<text x="1405" y="334" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1405" dy="0">R4 – revise + recommit</tspan>
+</text>
+<text x="1405" y="353" font-family="Helvetica, Arial, sans-serif" font-size="10.8" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1405" dy="0">only if review or gate asks;</tspan>
+<tspan x="1405" dy="13.8">commit rule re-applied</tspan>
+</text>
+<text x="525" y="422" font-family="Helvetica, Arial, sans-serif" font-size="12.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="525" dy="0">Final run states (every run ends in exactly one)  ·  CONVERGED or SOLO commits enter the pipeline</tspan>
+</text>
+<rect x="525" y="432" width="225" height="52" rx="5" fill="#f4f6f6" stroke="#566573" stroke-width="1.3"/>
+<text x="533" y="450" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="533" dy="0">CARD_ISSUED</tspan>
+</text>
+<text x="533" y="467" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="533" dy="0">collusion and/or single-actor</tspan>
+</text>
+<rect x="758" y="432" width="225" height="52" rx="5" fill="#f4f6f6" stroke="#566573" stroke-width="1.3"/>
+<text x="766" y="450" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="766" dy="0">NO_SCHEME</tspan>
+</text>
+<text x="766" y="467" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="766" dy="0">nobody commits</tspan>
+</text>
+<rect x="991" y="432" width="225" height="52" rx="5" fill="#f4f6f6" stroke="#566573" stroke-width="1.3"/>
+<text x="999" y="450" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="999" dy="0">FAILED</tspan>
+</text>
+<text x="999" y="467" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="999" dy="0">any abstention / invalid</tspan>
+</text>
+<rect x="1224" y="432" width="225" height="52" rx="5" fill="#f4f6f6" stroke="#566573" stroke-width="1.3"/>
+<text x="1232" y="450" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="1232" dy="0">BUDGET_EXCEEDED</tspan>
+</text>
+<text x="1232" y="467" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1232" dy="0">rounds · msgs · time · tokens</tspan>
+</text>
+<rect x="1457" y="432" width="225" height="52" rx="5" fill="#f4f6f6" stroke="#566573" stroke-width="1.3"/>
+<text x="1465" y="450" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="1465" dy="0">REJECTED_IN_PIPELINE</tspan>
+</text>
+<text x="1465" y="467" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1465" dy="0">realism · review · gate</tspan>
+</text>
+<text x="525" y="510" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="italic" fill="#566573">
+<tspan x="525" dy="0">Commit rule: proposer counts as accepting; every actor with a step must accept or hold a can_be_unwitting step; solo = proposer's steps only.</tspan>
+</text>
+<text x="525" y="526" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="italic" fill="#566573">
+<tspan x="525" dy="0">Non-card states → run report: metadata only (state, counts, reason codes, trace_ref), checked by the gate.</tspan>
+</text>
+<rect x="510" y="590" width="385" height="330" rx="6" fill="#fef5e7" stroke="#d35400" stroke-width="2.2"/>
+<text x="522" y="612" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" font-weight="bold" font-style="normal" fill="#d35400">
+<tspan x="522" dy="0">Trainee Agent</tspan>
+</text>
+<rect x="822" y="597" width="38" height="22" rx="11" fill="#1b2631"/>
+<text x="841.0" y="612.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="841.0" dy="0">1·3</tspan>
+</text>
+<text x="524" y="636" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Private: own reasoning and draft offers</tspan>
+</text>
+<text x="524" y="655" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Knows: own enrolment, attendance, payouts</tspan>
+</text>
+<text x="524" y="674" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Doesn't know: records the provider files</tspan>
+</text>
+<text x="524" y="693" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Actions: enrol · attend / sign · submit claim</tspan>
+</text>
+<text x="536" y="712" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">· refer peers</tspan>
+</text>
+<text x="524" y="731" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Channels: public · private with Provider, Employer</tspan>
+</text>
+<text x="524" y="750" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Tools (argument-checked):</tspan>
+</text>
+<text x="524" y="769" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#7b241c">
+<tspan x="524" dy="0">   propose_contribution(action in own Actions)</tspan>
+</text>
+<text x="524" y="788" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#7b241c">
+<tspan x="524" dy="0">   send_message(channel, to) · accept(id)</tspan>
+</text>
+<rect x="524" y="856" width="357" height="52" rx="5" fill="#f5eef8" stroke="#7d3c98" stroke-width="1.3"/>
+<text x="534" y="875" font-family="Helvetica, Arial, sans-serif" font-size="11.3" text-anchor="start" font-weight="bold" font-style="normal" fill="#7d3c98">
+<tspan x="534" dy="0">Scripted mock LLM + adversarial scripts</tspan>
+</text>
+<text x="534" y="893" font-family="Helvetica, Arial, sans-serif" font-size="10.4" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="534" dy="0">out-of-role action · forbidden tool · injected-text echo</tspan>
+</text>
+<polyline points="650,550 650,588" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<polyline points="760,588 760,552" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<rect x="907" y="590" width="385" height="330" rx="6" fill="#fef5e7" stroke="#d35400" stroke-width="2.2"/>
+<text x="919" y="612" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" font-weight="bold" font-style="normal" fill="#d35400">
+<tspan x="919" dy="0">Training Provider Agent</tspan>
+</text>
+<rect x="1219" y="597" width="38" height="22" rx="11" fill="#1b2631"/>
+<text x="1238.0" y="612.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1238.0" dy="0">1·3</tspan>
+</text>
+<text x="921" y="636" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="921" dy="0">• Private: own reasoning and draft offers</tspan>
+</text>
+<text x="921" y="655" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="921" dy="0">• Knows: class records, assessments, claims</tspan>
+</text>
+<text x="921" y="674" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="921" dy="0">• Doesn't know: employer payroll</tspan>
+</text>
+<text x="921" y="693" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="921" dy="0">• Actions: run course · record attendance /</tspan>
+</text>
+<text x="933" y="712" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="933" dy="0">results · issue certificate · engage recruiter*</tspan>
+</text>
+<text x="921" y="731" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="921" dy="0">• Channels: public · private with Trainee, Employer</tspan>
+</text>
+<text x="921" y="750" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="921" dy="0">• Tools (argument-checked):</tspan>
+</text>
+<text x="921" y="769" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#7b241c">
+<tspan x="921" dy="0">   propose_contribution(action in own Actions)</tspan>
+</text>
+<text x="921" y="788" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#7b241c">
+<tspan x="921" dy="0">   send_message(channel, to) · accept(id)</tspan>
+</text>
+<rect x="921" y="856" width="357" height="52" rx="5" fill="#f5eef8" stroke="#7d3c98" stroke-width="1.3"/>
+<text x="931" y="875" font-family="Helvetica, Arial, sans-serif" font-size="11.3" text-anchor="start" font-weight="bold" font-style="normal" fill="#7d3c98">
+<tspan x="931" dy="0">Scripted mock LLM + adversarial scripts</tspan>
+</text>
+<text x="931" y="893" font-family="Helvetica, Arial, sans-serif" font-size="10.4" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="931" dy="0">out-of-role action · forbidden tool · injected-text echo</tspan>
+</text>
+<polyline points="1047,550 1047,588" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<polyline points="1157,588 1157,552" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<rect x="1304" y="590" width="385" height="330" rx="6" fill="#fef5e7" stroke="#d35400" stroke-width="2.2"/>
+<text x="1316" y="612" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="start" font-weight="bold" font-style="normal" fill="#d35400">
+<tspan x="1316" dy="0">Employer Agent</tspan>
+</text>
+<rect x="1616" y="597" width="38" height="22" rx="11" fill="#1b2631"/>
+<text x="1635.0" y="612.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1635.0" dy="0">1·3</tspan>
+</text>
+<text x="1318" y="636" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1318" dy="0">• Private: own reasoning and draft offers</tspan>
+</text>
+<text x="1318" y="655" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1318" dy="0">• Knows: payroll, grant disbursements</tspan>
+</text>
+<text x="1318" y="674" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1318" dy="0">• Doesn't know: class records</tspan>
+</text>
+<text x="1318" y="693" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1318" dy="0">• Actions: hire / release · sponsor fee · confirm</tspan>
+</text>
+<text x="1330" y="712" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1330" dy="0">employment · receive disbursement · sponsor*</tspan>
+</text>
+<text x="1318" y="731" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1318" dy="0">• Channels: public · private with Trainee, Provider</tspan>
+</text>
+<text x="1318" y="750" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1318" dy="0">• Tools (argument-checked):</tspan>
+</text>
+<text x="1318" y="769" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#7b241c">
+<tspan x="1318" dy="0">   propose_contribution(action in own Actions)</tspan>
+</text>
+<text x="1318" y="788" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#7b241c">
+<tspan x="1318" dy="0">   send_message(channel, to) · accept(id)</tspan>
+</text>
+<rect x="1318" y="856" width="357" height="52" rx="5" fill="#f5eef8" stroke="#7d3c98" stroke-width="1.3"/>
+<text x="1328" y="875" font-family="Helvetica, Arial, sans-serif" font-size="11.3" text-anchor="start" font-weight="bold" font-style="normal" fill="#7d3c98">
+<tspan x="1328" dy="0">Scripted mock LLM + adversarial scripts</tspan>
+</text>
+<text x="1328" y="893" font-family="Helvetica, Arial, sans-serif" font-size="10.4" text-anchor="start" font-weight="normal" font-style="normal" fill="#34495e">
+<tspan x="1328" dy="0">out-of-role action · forbidden tool · injected-text echo</tspan>
+</text>
+<polyline points="1444,550 1444,588" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<polyline points="1554,588 1554,552" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<text x="560" y="572" font-family="Helvetica, Arial, sans-serif" font-size="10.3" text-anchor="start" font-weight="normal" font-style="italic" fill="#c0392b">
+<tspan x="560" dy="0">role brief + filtered messages</tspan>
+</text>
+<text x="770" y="572" font-family="Helvetica, Arial, sans-serif" font-size="10.3" text-anchor="start" font-weight="normal" font-style="italic" fill="#1f6fb2">
+<tspan x="770" dy="0">validated message</tspan>
+</text>
+<text x="512" y="940" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="italic" fill="#566573">
+<tspan x="512" dy="0">* Recruiters (S3, MO-04) and sponsors (MO-08) are modelled as Provider / Employer capabilities – a stated limitation.</tspan>
+</text>
+<rect x="510" y="965" width="286" height="250" rx="6" fill="white" stroke="#1f6fb2" stroke-width="2"/>
+<text x="522" y="987" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#1f6fb2">
+<tspan x="522" dy="0">Pattern builder (code)</tspan>
+</text>
+<rect x="750" y="972" width="38" height="22" rx="11" fill="#1b2631"/>
+<text x="769.0" y="987.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="769.0" dy="0">4·6</tspan>
+</text>
+<text x="524" y="1009" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Committed proposal + linked</tspan>
+</text>
+<text x="536" y="1026" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">private side-agreements →</tspan>
+</text>
+<text x="536" y="1043" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">objective, steps, flows (from → to,</tspan>
+</text>
+<text x="536" y="1060" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">type, visibility)</tspan>
+</text>
+<text x="524" y="1077" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Origin label on every element:</tspan>
+</text>
+<text x="536" y="1094" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">actor message → SIMULATED</tspan>
+</text>
+<text x="536" y="1111" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">profile / annotation → ASSUMPTION</tspan>
+</text>
+<text x="536" y="1128" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="536" dy="0">unflagged verbatim quote → SOURCE</tspan>
+</text>
+<text x="524" y="1145" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Citations → supported_by links</tspan>
+</text>
+<rect x="808" y="965" width="286" height="250" rx="6" fill="white" stroke="#1f6fb2" stroke-width="2"/>
+<text x="820" y="987" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#1f6fb2">
+<tspan x="820" dy="0">Realism checks (code)</tspan>
+</text>
+<rect x="1048" y="972" width="38" height="22" rx="11" fill="#1b2631"/>
+<text x="1067.0" y="987.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1067.0" dy="0">3·4</tspan>
+</text>
+<text x="822" y="1009" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="822" dy="0">• Pass / fail – this IS plausibility:</tspan>
+</text>
+<text x="822" y="1026" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="822" dy="0">• Each action in its actor's library</tspan>
+</text>
+<text x="822" y="1043" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="822" dy="0">• Preconditions met in step order</tspan>
+</text>
+<text x="822" y="1060" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="822" dy="0">• Every colluder gains a benefit</tspan>
+</text>
+<text x="822" y="1077" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="822" dy="0">• Roles: colluder = accepted + benefits</tspan>
+</text>
+<text x="834" y="1094" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="834" dy="0">unwitting = has a step, no accept</tspan>
+</text>
+<text x="834" y="1111" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="834" dy="0">victim = net loss, no accept</tspan>
+</text>
+<text x="822" y="1128" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="822" dy="0">• Fail → REJECTED_IN_PIPELINE</tspan>
+</text>
+<rect x="1106" y="965" width="286" height="250" rx="6" fill="white" stroke="#1f6fb2" stroke-width="2"/>
+<text x="1118" y="987" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#1f6fb2">
+<tspan x="1118" dy="0">Minimal actor-set analysis</tspan>
+</text>
+<rect x="1362" y="972" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1373.0" y="987.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1373.0" dy="0">5</tspan>
+</text>
+<text x="1120" y="1009" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1120" dy="0">• Planner (code) over the action</tspan>
+</text>
+<text x="1132" y="1026.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1132" dy="0">library: preconditions → effects</tspan>
+</text>
+<text x="1120" y="1043.4" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1120" dy="0">• For each of the 7 actor subsets:</tspan>
+</text>
+<text x="1132" y="1060.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1132" dy="0">can it reach the objective by</tspan>
+</text>
+<text x="1132" y="1077.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1132" dy="0">ANY path, not just this one?</tspan>
+</text>
+<text x="1120" y="1095.0000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1120" dy="0">• Smallest feasible subset of 1 →</tspan>
+</text>
+<text x="1132" y="1112.2000000000003" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1132" dy="0">single-actor card</tspan>
+</text>
+<text x="1120" y="1129.4000000000003" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1120" dy="0">• Only ≥2 feasible → collusion card</tspan>
+</text>
+<rect x="1404" y="965" width="286" height="250" rx="6" fill="#fef5e7" stroke="#d35400" stroke-width="2.2"/>
+<text x="1416" y="987" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#d35400">
+<tspan x="1416" dy="0">Review Agent (own boundary)</tspan>
+</text>
+<rect x="1652" y="972" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1663.0" y="987.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1663.0" dy="0">7</tspan>
+</text>
+<text x="1416" y="1010" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1416" dy="0">• Input: card after gate pre-check</tspan>
+</text>
+<text x="1416" y="1031" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1416" dy="0">• Code: citation resolves, quoted</tspan>
+</text>
+<text x="1428" y="1052" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1428" dy="0">span exists verbatim, labels OK</tspan>
+</text>
+<text x="1416" y="1073" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1416" dy="0">• LLM judgement: span supports</tspan>
+</text>
+<text x="1428" y="1094" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1428" dy="0">claim? · MO match · novelty</tspan>
+</text>
+<text x="1416" y="1115" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1416" dy="0">• Writes signals + data needed</tspan>
+</text>
+<text x="1428" y="1136" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1428" dy="0">(origin ASSUMPTION, author review)</tspan>
+</text>
+<text x="1416" y="1157" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1416" dy="0">• Cannot approve or set status</tspan>
+</text>
+<polyline points="796,1090 806,1090" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<polyline points="1094,1090 1104,1090" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<polyline points="1392,1090 1402,1090" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<polyline points="510,470 500,470 500,1090 508,1090" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<text x="504" y="780" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#1f6fb2" transform="rotate(-90 504 780)">
+<tspan x="504" dy="0">CONVERGED or SOLO commit</tspan>
+</text>
+<rect x="510" y="1250" width="880" height="175" rx="6" fill="white" stroke="#c0392b" stroke-width="2"/>
+<text x="522" y="1272" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="522" dy="0">Output safety gate (rules + classifier)</tspan>
+</text>
+<rect x="1360" y="1257" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1371.0" y="1272.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1371.0" dy="0">9</tspan>
+</text>
+<text x="524" y="1294" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Rules (code): schema + origin labels, banned-term lists, named-entity check, specificity heuristics</tspan>
+</text>
+<text x="524" y="1311.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Classifier (production; mocked in PoC): “more concrete than Annex A” and evasion detail – rules alone are easy to evade</tspan>
+</text>
+<text x="524" y="1328.4" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Runs twice: rule pre-check before the Review Agent, full gate after; also checks every run report</tspan>
+</text>
+<text x="524" y="1345.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Stamps every card “SIMULATED – NOT A FINDING OF FACT”</tspan>
+</text>
+<text x="524" y="1362.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="524" dy="0">• Blocked → one revision (shared budget), else REJECTED_IN_PIPELINE</tspan>
+</text>
+<rect x="1404" y="1250" width="286" height="175" rx="6" fill="white" stroke="#c0392b" stroke-width="2"/>
+<text x="1416" y="1272" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="1416" dy="0">Orchestrator: human handoff</tspan>
+</text>
+<rect x="1660" y="1257" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1671.0" y="1272.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1671.0" dy="0">9</tspan>
+</text>
+<text x="1418" y="1294" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1418" dy="0">• Collusion cards</tspan>
+</text>
+<text x="1418" y="1311.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1418" dy="0">• Single-actor cards (low priority)</tspan>
+</text>
+<text x="1418" y="1328.4" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1418" dy="0">• Run reports: metadata only,</tspan>
+</text>
+<text x="1430" y="1345.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1430" dy="0">gate-checked</tspan>
+</text>
+<text x="1418" y="1362.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1418" dy="0">• → review queue</tspan>
+</text>
+<polyline points="1547,1215 1547,1233 950,1233 950,1248" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<polyline points="1390,1338 1402,1338" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<polyline points="1300,1425 1300,1440 1702,1440 1702,470 1692,470" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<polyline points="1690,1000 1702,1000" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<text x="1698" y="900" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#c0392b" transform="rotate(-90 1698 900)">
+<tspan x="1698" dy="0">codes + field pointers only – no MO text or IDs, ≤1 revision</tspan>
+</text>
+<text x="504" y="1470" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="italic" fill="#566573">
+<tspan x="504" dy="0">Agents never write files. Writers: orchestrator (traces), approval service (decisions), eval harness (reports). PoC isolation = in-process; production = separate containers.</tspan>
+</text>
+<polyline points="510,525 495,525 495,1300 508,1300" fill="none" stroke="#1f6fb2" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#a-data)"/>
+<text x="492" y="1240" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#1f6fb2" transform="rotate(-90 492 1240)">
+<tspan x="492" dy="0">run reports</tspan>
+</text>
+<polyline points="460,1040 486,1040 486,1515 1740,1515 1740,1160 1743,1160" fill="none" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#a-trace)"/>
+<text x="1100" y="1531" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#7f8c8d">
+<tspan x="1100" dy="0">sanitiser flags → trace store</tspan>
+</text>
+<polyline points="460,1150 476,1150 476,400 508,400" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<text x="472" y="760" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#1f6fb2" transform="rotate(-90 472 760)">
+<tspan x="472" dy="0">scenario text (as data)</tspan>
+</text>
+<polyline points="460,1210 482,1210 482,1240 1630,1240 1630,1217" fill="none" stroke="#1f6fb2" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#a-data)"/>
+<text x="1000" y="1256" font-family="Helvetica, Arial, sans-serif" font-size="1" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1000" dy="0"></tspan>
+</text>
+<polyline points="460,200 508,200" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<polyline points="460,430 508,430" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<rect x="1745" y="95" width="925" height="525" rx="6" fill="white" stroke="#1f6fb2" stroke-width="2.5"/>
+<text x="1757" y="118" font-family="Helvetica, Arial, sans-serif" font-size="14.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#1f6fb2">
+<tspan x="1757" dy="0">Pattern card schema (JSON, validated)</tspan>
+</text>
+<rect x="2610" y="101" width="38" height="22" rx="11" fill="#1b2631"/>
+<text x="2629.0" y="116.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="2629.0" dy="0">4–7</tspan>
+</text>
+<rect x="1757" y="130" width="900" height="28" rx="4" fill="#fdedec" stroke="#c0392b" stroke-width="1.3"/>
+<text x="2207" y="149" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="#c0392b">
+<tspan x="2207" dy="0">SIMULATED – NOT A FINDING OF FACT</tspan>
+</text>
+<text x="1765" y="182" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• card_type: collusion | single-actor</tspan>
+</text>
+<text x="1765" y="208" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• pattern_id · run_id · scenario_id · scenario_mode</tspan>
+</text>
+<text x="1765" y="234" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• objective (goal state) · initial_state</tspan>
+</text>
+<text x="1765" y="260" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• schema / profile / source / annotation versions</tspan>
+</text>
+<text x="1765" y="286" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• participants[]: actor, role (colluder · unwitting · victim)</tspan>
+</text>
+<text x="1765" y="312" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• steps[]: actor, action, preconditions, effects, origin</tspan>
+</text>
+<text x="1765" y="338" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• flows[]: from → to, type, visibility, origin</tspan>
+</text>
+<text x="1765" y="364" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• benefits[] per colluder, origin</tspan>
+</text>
+<text x="1765" y="390" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• feasible_subsets[] (planner result)</tspan>
+</text>
+<text x="1765" y="416" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• screening_signals[] (review agent, ASSUMPTION)</tspan>
+</text>
+<text x="1765" y="442" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1765" dy="0">• data_needed_for_testing[] (review, ASSUMPTION)</tspan>
+</text>
+<text x="2215" y="182" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• statements[]: origin = SOURCE | SIMULATED |</tspan>
+</text>
+<text x="2229" y="208" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">ASSUMPTION (one origin each)</tspan>
+</text>
+<text x="2229" y="234" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">supported_by[] {source_id, span, verdict}</tspan>
+</text>
+<text x="2229" y="260" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">depends_on_assumptions[] · trace_ref</tspan>
+</text>
+<text x="2215" y="286" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• assumptions[] (separate list)</tspan>
+</text>
+<text x="2215" y="312" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• mo_matches[]: MO-ID + relation</tspan>
+</text>
+<text x="2215" y="338" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• novelty: known | variation | new</tspan>
+</text>
+<text x="2215" y="364" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• source_support (rubric 0–3, below)</tspan>
+</text>
+<text x="2215" y="390" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• realism check results (pass / fail)</tspan>
+</text>
+<text x="2215" y="416" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• safety_gate result · review_notes</tspan>
+</text>
+<text x="2215" y="442" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2215" dy="0">• status: set only by approval service</tspan>
+</text>
+<text x="2229" y="468" font-family="Helvetica, Arial, sans-serif" font-size="11.6" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">(agent output cannot contain it)</tspan>
+</text>
+<rect x="1757" y="503" width="900" height="110" rx="4" fill="#f4f6f6" stroke="#566573" stroke-width="1"/>
+<text x="1767" y="523" font-family="Helvetica, Arial, sans-serif" font-size="11.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="1767" dy="0">Novelty rules (7) – use our MO annotations (actor set, core mechanisms), labelled ASSUMPTION:</tspan>
+</text>
+<text x="1767" y="543" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1767" dy="0">known = same actor set and core mechanisms · variation = shares a core mechanism, differs in actors or steps · new = no core match</tspan>
+</text>
+<text x="1767" y="563" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1767" dy="0">new: no evidence threshold – flagged 'emerging, low evidence' and needs two reviewers.  source_support: 0 none · 1 unverified excerpt only</tspan>
+</text>
+<text x="1767" y="583" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1767" dy="0">  · 2 matches an observed MO mechanism · 3 several observed MOs.  Recall runs (MO scenarios) are excluded from novelty claims.</tspan>
+</text>
+<text x="1767" y="601" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1767" dy="0">Plausibility = realism checks (code, pass / fail); there is no separate LLM plausibility score.</tspan>
+</text>
+<rect x="1745" y="640" width="450" height="295" rx="6" fill="#f5eef8" stroke="#6c3483" stroke-width="2"/>
+<text x="1757" y="662" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#6c3483">
+<tspan x="1757" dy="0">Human review &amp; approval</tspan>
+</text>
+<rect x="2165" y="647" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="2176.0" y="662.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="2176.0" dy="0">9</tspan>
+</text>
+<text x="1759" y="684" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Queue: collusion cards, single-actor</tspan>
+</text>
+<text x="1771" y="701.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1771" dy="0">cards and run reports</tspan>
+</text>
+<text x="1759" y="718.4000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Identity: reviewer allowlist (SSO in prod)</tspan>
+</text>
+<text x="1759" y="735.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Checklist: open every citation first</tspan>
+</text>
+<text x="1759" y="752.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Decision hash-bound to the card (SHA-256):</tspan>
+</text>
+<text x="1771" y="770.0000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1771" dy="0">detects edits; no key, so not a signature</tspan>
+</text>
+<text x="1759" y="787.2000000000003" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Builder ≠ reviewer; 'new' needs 2 reviewers</tspan>
+</text>
+<text x="1771" y="804.4000000000003" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1771" dy="0">PoC on one machine: --as-reviewer flag,</tspan>
+</text>
+<text x="1771" y="821.6000000000004" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1771" dy="0">logged as WEAKENED_CONTROL</tspan>
+</text>
+<text x="1759" y="838.8000000000004" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Approve for testing · reject · request</tspan>
+</text>
+<text x="1771" y="856.0000000000005" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1771" dy="0">changes (→ new run, reviewer codes)</tspan>
+</text>
+<rect x="2215" y="640" width="455" height="130" rx="6" fill="white" stroke="#6c3483" stroke-width="2"/>
+<text x="2227" y="662" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#6c3483">
+<tspan x="2227" dy="0">Decision log &amp; register</tspan>
+</text>
+<text x="2229" y="684" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">• Decision log: every decision + rationale</tspan>
+</text>
+<text x="2229" y="701.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">• Register: approved-for-testing cards only</tspan>
+</text>
+<text x="2229" y="718.4000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">• Rejected cards → evaluation data</tspan>
+</text>
+<rect x="2215" y="785" width="455" height="150" rx="6" fill="white" stroke="#6c3483" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="2227" y="807" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#6c3483">
+<tspan x="2227" dy="0">Before any screening rule (outside PoC)</tspan>
+</text>
+<text x="2229" y="829" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">• Back-test the pattern on historical claims</tspan>
+</text>
+<text x="2229" y="846.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">• Fairness review: does the rule target groups</tspan>
+</text>
+<text x="2241" y="863.4000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2241" dy="0">(e.g. elderly trainees, low-cost courses)?</tspan>
+</text>
+<text x="2229" y="880.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2229" dy="0">• Approval ≠ fact: patterns stay hypotheses</tspan>
+</text>
+<polyline points="1690,1338 1722,1338 1722,785 1743,785" fill="none" stroke="#6c3483" stroke-width="2" marker-end="url(#a-human)"/>
+<polyline points="1745,905 1737,905 1737,300 1692,300" fill="none" stroke="#6c3483" stroke-width="2" marker-end="url(#a-human)"/>
+<text x="1733" y="600" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#6c3483" transform="rotate(-90 1733 600)">
+<tspan x="1733" dy="0">request changes → new run</tspan>
+</text>
+<polyline points="2195,700 2213,700" fill="none" stroke="#6c3483" stroke-width="2" marker-end="url(#a-human)"/>
+<polyline points="2440,770 2440,783" fill="none" stroke="#6c3483" stroke-width="2" marker-end="url(#a-human)"/>
+<rect x="1745" y="955" width="925" height="225" rx="6" fill="#f4f6f6" stroke="#7f8c8d" stroke-width="2"/>
+<text x="1757" y="977" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#7f8c8d">
+<tspan x="1757" dy="0">Trace store</tspan>
+</text>
+<rect x="2632" y="962" width="30" height="22" rx="11" fill="#1b2631"/>
+<text x="2647.0" y="977.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="2647.0" dy="0">10</tspan>
+</text>
+<text x="1759" y="999" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Append-only JSONL per run; runs written one at a time (file lock) into a hash-chained runs manifest</tspan>
+</text>
+<text x="1759" y="1016.2" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Head hash kept outside the repo and printed in each run summary (production: write-once object storage)</tspan>
+</text>
+<text x="1759" y="1033.4" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Events: sanitiser flags, every message, tool call with args (allowed / denied), validation, retry, abstention,</tspan>
+</text>
+<text x="1771" y="1050.6000000000001" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1771" dy="0">final state, review output, gate results, human decision with rationale and card hash</tspan>
+</text>
+<text x="1759" y="1067.8000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Spans: per-agent latency and simulated tokens · replay = recorded responses (not rng_seed)</tspan>
+</text>
+<text x="1759" y="1085.0000000000002" font-family="Helvetica, Arial, sans-serif" font-size="11.2" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1759" dy="0">• Restricted access · repo ships gate-checked, redacted sample traces from synthetic mock runs (stated in README)</tspan>
+</text>
+<polyline points="1710,1100 1743,1100" fill="none" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#a-trace)"/>
+<polyline points="1970,935 1970,953" fill="none" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#a-trace)"/>
+<rect x="1745" y="1200" width="925" height="440" rx="6" fill="#e8f6f3" stroke="#117a65" stroke-width="2.2"/>
+<text x="1757" y="1223" font-family="Helvetica, Arial, sans-serif" font-size="14.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#117a65">
+<tspan x="1757" dy="0">Evaluation harness (pytest, make test)</tspan>
+</text>
+<rect x="2620" y="1207" width="30" height="22" rx="11" fill="#1b2631"/>
+<text x="2635.0" y="1222.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="2635.0" dy="0">10</tspan>
+</text>
+<rect x="1760" y="1235" width="292" height="318" rx="5" fill="white" stroke="#117a65" stroke-width="1.3"/>
+<text x="1770" y="1255" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#117a65">
+<tspan x="1770" dy="0">Code-path tests (valid with mocks)</tspan>
+</text>
+<text x="1772" y="1278" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Adversarial mock scripts: out-of-</tspan>
+</text>
+<text x="1784" y="1298" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1784" dy="0">role action, forbidden tool, over</tspan>
+</text>
+<text x="1784" y="1318" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1784" dy="0">message cap → all blocked</tspan>
+</text>
+<text x="1772" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Every final state reached, incl.</tspan>
+</text>
+<text x="1784" y="1358" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1784" dy="0">REJECTED_IN_PIPELINE</tspan>
+</text>
+<text x="1772" y="1378" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Planner: solo-feasible scenario</tspan>
+</text>
+<text x="1784" y="1398" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1784" dy="0">→ single-actor card</tspan>
+</text>
+<text x="1772" y="1418" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Review code checks: bad IDs,</tspan>
+</text>
+<text x="1784" y="1438" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1784" dy="0">missing spans, wrong labels</tspan>
+</text>
+<text x="1772" y="1458" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Gate rules: banned terms, NER</tspan>
+</text>
+<text x="1772" y="1478" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Hash binding: edited card fails</tspan>
+</text>
+<text x="1772" y="1498" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">• Status spoofing rejected</tspan>
+</text>
+<rect x="2062" y="1235" width="292" height="318" rx="5" fill="white" stroke="#117a65" stroke-width="1.3"/>
+<text x="2072" y="1255" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#117a65">
+<tspan x="2072" dy="0">End-to-end &amp; regression</tspan>
+</text>
+<text x="2074" y="1278" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2074" dy="0">• Test-only annex variants with</tspan>
+</text>
+<text x="2086" y="1298" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2086" dy="0">injected text, derived from the</tspan>
+</text>
+<text x="2086" y="1318" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2086" dy="0">annexes, fed through the sanitiser</tspan>
+</text>
+<text x="2074" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2074" dy="0">• Negative controls: S5, S1, S2</tspan>
+</text>
+<text x="2086" y="1358" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2086" dy="0">→ NO_SCHEME; S4 → at most</tspan>
+</text>
+<text x="2086" y="1378" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2086" dy="0">a single-actor card</tspan>
+</text>
+<text x="2074" y="1398" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2074" dy="0">• Recall: MO scenarios → known</tspan>
+</text>
+<text x="2086" y="1418" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2086" dy="0">+ correct MO-IDs</tspan>
+</text>
+<text x="2074" y="1438" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2074" dy="0">• Separately written oracle cards</tspan>
+</text>
+<text x="2086" y="1458" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2086" dy="0">(same author, not independent)</tspan>
+</text>
+<text x="2074" y="1478" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2074" dy="0">• Snapshots normalised before diff</tspan>
+</text>
+<rect x="2364" y="1235" width="292" height="318" rx="5" fill="white" stroke="#117a65" stroke-width="1.3" stroke-dasharray="6,4"/>
+<text x="2374" y="1255" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#117a65">
+<tspan x="2374" dy="0">Needs a real model (mocks prove nothing)</tspan>
+</text>
+<text x="2376" y="1278" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2376" dy="0">• Review judgement: does a span</tspan>
+</text>
+<text x="2388" y="1298" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2388" dy="0">support its claim? MO match?</tspan>
+</text>
+<text x="2376" y="1318" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2376" dy="0">• Gate classifier accuracy</tspan>
+</text>
+<text x="2376" y="1338" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2376" dy="0">• Injection resistance, role</tspan>
+</text>
+<text x="2388" y="1358" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2388" dy="0">adherence, realism</tspan>
+</text>
+<text x="2376" y="1378" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2376" dy="0">• Pattern quality vs expert-</tspan>
+</text>
+<text x="2388" y="1398" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2388" dy="0">labelled set</tspan>
+</text>
+<text x="2376" y="1418" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2376" dy="0">• ≥20 samples per scenario;</tspan>
+</text>
+<text x="2388" y="1438" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="2388" dy="0">rates reported with intervals</tspan>
+</text>
+<rect x="1760" y="1562" width="896" height="66" rx="5" fill="white" stroke="#117a65" stroke-width="1.3"/>
+<text x="1772" y="1582" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="bold" font-style="normal" fill="#117a65">
+<tspan x="1772" dy="0">Metrics &amp; thresholds (each names its target):</tspan>
+</text>
+<text x="1772" y="1602" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">Mock runs – must be exact: schema-valid 100% · origin labels match oracle · planner results match oracle · every adversarial script blocked</tspan>
+</text>
+<text x="1772" y="1620" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1772" dy="0">Real model – n ≥ 20 per scenario: false-scheme rate on negatives · citation support vs hand-labelled set (counts, small n) · cost and latency</tspan>
+</text>
+<polyline points="2215,1180 2215,1198" fill="none" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#a-trace)"/>
+<polyline points="1745,1500 1726,1500 1726,1505 18,1505 18,950 28,950" fill="none" stroke="#1f6fb2" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#a-data)"/>
+<text x="900" y="1500" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="start" font-weight="normal" font-style="italic" fill="#1f6fb2">
+<tspan x="900" dy="0">test fixtures (incl. injected annex text) enter through the sanitiser – end-to-end</tspan>
+</text>
+<rect x="30" y="1545" width="1680" height="95" rx="6" fill="white" stroke="#566573" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="42" y="1567" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="42" dy="0">Production path (designed, not built in the PoC)</tspan>
+</text>
+<text x="44" y="1589" font-family="Helvetica, Arial, sans-serif" font-size="11.3" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Mock adapter → approved model endpoint behind an internal model gateway with per-agent scopes and cost limits (the MCP gateway from Part 1)</tspan>
+</text>
+<text x="44" y="1606.3" font-family="Helvetica, Arial, sans-serif" font-size="11.3" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="44" dy="0">• Agents in separate containers · trace store on access-controlled, write-once storage · human review in a web UI with SSO</tspan>
+</text>
+<rect x="30" y="1655" width="2640" height="120" rx="6" fill="white" stroke="#566573" stroke-width="1.3"/>
+<text x="44" y="1677" font-family="Helvetica, Arial, sans-serif" font-size="13.5" text-anchor="start" font-weight="bold" font-style="normal" fill="#566573">
+<tspan x="44" dy="0">Legend</tspan>
+</text>
+<polyline points="50,1708 110,1708" fill="none" stroke="#1f6fb2" stroke-width="2" marker-end="url(#a-data)"/>
+<text x="122" y="1712" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="122" dy="0">data / content flow</tspan>
+</text>
+<polyline points="340,1708 400,1708" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#a-control)"/>
+<text x="412" y="1712" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="412" dy="0">control: prompts, limits, revision</tspan>
+</text>
+<polyline points="630,1708 690,1708" fill="none" stroke="#7f8c8d" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#a-trace)"/>
+<text x="702" y="1712" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="702" dy="0">trace events</tspan>
+</text>
+<polyline points="920,1708 980,1708" fill="none" stroke="#6c3483" stroke-width="2" marker-end="url(#a-human)"/>
+<text x="992" y="1712" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="992" dy="0">human decision</tspan>
+</text>
+<rect x="50" y="1735" width="40" height="22" rx="3" fill="#fdedec" stroke="#c0392b" stroke-width="1.8" stroke-dasharray="8,5"/>
+<text x="100" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="100" dy="0">untrusted input zone</tspan>
+</text>
+<rect x="300" y="1735" width="40" height="22" rx="3" fill="#f8f9f9" stroke="#2c3e50" stroke-width="1.8" stroke-dasharray="10,6"/>
+<text x="350" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="350" dy="0">simulation sandbox</tspan>
+</text>
+<rect x="540" y="1735" width="40" height="22" rx="3" fill="#fef5e7" stroke="#d35400" stroke-width="1.8"/>
+<text x="590" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="590" dy="0">LLM agent boundary</tspan>
+</text>
+<rect x="790" y="1735" width="40" height="22" rx="3" fill="white" stroke="#1f6fb2" stroke-width="1.8"/>
+<text x="840" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="840" dy="0">deterministic code</tspan>
+</text>
+<rect x="1040" y="1735" width="40" height="22" rx="3" fill="#f5eef8" stroke="#6c3483" stroke-width="1.8"/>
+<text x="1090" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1090" dy="0">human-only step</tspan>
+</text>
+<rect x="1280" y="1735" width="40" height="22" rx="3" fill="#e8f6f3" stroke="#117a65" stroke-width="1.8"/>
+<text x="1330" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1330" dy="0">evaluation</tspan>
+</text>
+<rect x="1500" y="1735" width="22" height="22" rx="11" fill="#1b2631"/>
+<text x="1511.0" y="1750.5" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" font-style="normal" fill="white">
+<tspan x="1511.0" dy="0">n</tspan>
+</text>
+<text x="1535" y="1751" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1535" dy="0">= brief point: 1 profiles · 2 messages · 3 boundaries · 4 patterns · 5 actor removal · 6 source separation ·</tspan>
+</text>
+<text x="1535" y="1768" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="normal" fill="#1b2631">
+<tspan x="1535" dy="0">   7 MO classification · 8 schemas / limits · 9 safeguards / approval · 10 traces / evals</tspan>
+</text>
+<text x="1500" y="1712" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="italic" fill="#566573">
+<tspan x="1500" dy="0">Arrows point from sender to receiver. Dashed boxes = future or outside the PoC.</tspan>
+</text>
+</svg>

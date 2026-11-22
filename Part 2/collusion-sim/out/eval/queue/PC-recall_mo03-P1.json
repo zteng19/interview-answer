@@ -1,0 +1,188 @@
+{
+  "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+  "card_type": "single-actor",
+  "pattern_id": "PC-recall_mo03-P1",
+  "parent_pattern_id": null,
+  "run_id": "recall_mo03-seed0",
+  "scenario_id": "recall_mo03",
+  "scenario_mode": "recall",
+  "versions": {
+    "schema": "card-v1",
+    "profiles": "profiles-v2",
+    "world": "world-v2",
+    "annotations": "annotations-v2",
+    "run": "run-v1"
+  },
+  "objective_id": "OBJ-2",
+  "objective_text": "Credit claim paid without attending the course",
+  "initial_state": [
+    "course_offered"
+  ],
+  "participants": [
+    {
+      "actor": "trainee",
+      "role": "single_actor",
+      "victim": false
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "actor": "trainee",
+      "action": "enrol",
+      "text": "Trainee enrols in a course",
+      "preconditions": [
+        "course_offered"
+      ],
+      "effects": [
+        "enrolled"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 12
+    },
+    {
+      "index": 1,
+      "actor": "trainee",
+      "action": "submit_credit_claim",
+      "text": "Trainee submits a credit claim without attending the course",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "credit_claim_submitted"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 13
+    }
+  ],
+  "flows": [],
+  "benefits": [
+    {
+      "actor": "trainee",
+      "description": "Credits turned into a payout",
+      "origin": "SIMULATED"
+    }
+  ],
+  "feasible_subsets": [
+    [
+      "trainee"
+    ]
+  ],
+  "feasible_subsets_origin": "ASSUMPTION",
+  "related_party": [],
+  "effective_subsets": [
+    [
+      "trainee"
+    ]
+  ],
+  "statements": [
+    {
+      "text": "Trainee enrols in a course",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:enrol"
+      ],
+      "trace_ref": 12
+    },
+    {
+      "text": "submit false claims without attending a course",
+      "origin": "SOURCE",
+      "author": "us",
+      "source_id": "MO-03",
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "Trainee submits a credit claim without attending the course",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [
+        {
+          "source_id": "MO-03",
+          "span": "submit false claims without attending a course",
+          "verdict": "supports",
+          "note": null
+        }
+      ],
+      "depends_on_assumptions": [
+        "action:submit_credit_claim"
+      ],
+      "trace_ref": 13
+    },
+    {
+      "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    }
+  ],
+  "assumptions": [
+    "Objective OBJ-2: Credit claim paid without attending the course (world world-v2)",
+    "Preconditions, effects and SWDA checks come from our action library and world model",
+    "MO annotations annotations-v2 are our interpretation of Annex A",
+    "feasible_subsets is derived from the action library, not from agent behaviour"
+  ],
+  "mo_matches": [
+    {
+      "mo_id": "MO-03",
+      "relation": "known",
+      "basis": "Observed"
+    }
+  ],
+  "novelty": "known",
+  "source_support": 2,
+  "realism": {
+    "passed": true,
+    "codes": []
+  },
+  "screening_signals": [
+    {
+      "text": "Credit claims with no matching attendance evidence",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "data_needed_for_testing": [
+    {
+      "text": "Credit claims alongside course attendance records",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "review_notes": [],
+  "safety_gate": {
+    "stage": "full",
+    "blocked": false,
+    "codes": [],
+    "classifier": {
+      "result": "pass",
+      "demonstrated": false
+    }
+  },
+  "built_by": "pipeline",
+  "status": "pending_human_review"
+}

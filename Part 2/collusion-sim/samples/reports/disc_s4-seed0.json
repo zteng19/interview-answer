@@ -1,0 +1,22 @@
+{
+  "run_id": "disc_s4-seed0",
+  "scenario_id": "disc_s4",
+  "final_state": "CARD_ISSUED",
+  "rounds_used": 3,
+  "counts": {
+    "agent_calls": 9,
+    "messages_sent": 0,
+    "messages_delivered": 0,
+    "tool_calls": 8,
+    "denied_tool_calls": 0,
+    "refused_messages": 0,
+    "retries": 0,
+    "gate_blocks": 0,
+    "simulated_tokens": 311
+  },
+  "reason_codes": [],
+  "card_ids": [
+    "PC-disc_s4-P1"
+  ],
+  "trace_ref": "traces/disc_s4-seed0.jsonl"
+}

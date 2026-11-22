@@ -1,0 +1,22 @@
+{
+  "run_id": "disc_s2_sponsor-seed0",
+  "scenario_id": "disc_s2_sponsor",
+  "final_state": "CARD_ISSUED",
+  "rounds_used": 3,
+  "counts": {
+    "agent_calls": 9,
+    "messages_sent": 2,
+    "messages_delivered": 1,
+    "tool_calls": 15,
+    "denied_tool_calls": 1,
+    "refused_messages": 0,
+    "retries": 0,
+    "gate_blocks": 0,
+    "simulated_tokens": 645
+  },
+  "reason_codes": [],
+  "card_ids": [
+    "PC-disc_s2_sponsor-P1"
+  ],
+  "trace_ref": "traces/disc_s2_sponsor-seed0.jsonl"
+}

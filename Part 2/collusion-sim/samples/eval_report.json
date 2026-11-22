@@ -1,0 +1,809 @@
+{
+  "target": "mock runs \u2013 plumbing and code paths only; model quality needs a real model",
+  "scenarios": [
+    {
+      "scenario": "disc_s3",
+      "mode": "discovery",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "collusion",
+          "feasible_subsets": [
+            [
+              "trainee",
+              "provider"
+            ]
+          ],
+          "participants": {
+            "provider": "colluder",
+            "trainee": "colluder"
+          },
+          "novelty": "variation",
+          "mo_matches": {
+            "MO-04": "known",
+            "MO-05": "variation"
+          },
+          "source_support": 3,
+          "origins": {
+            "SOURCE": 2,
+            "SIMULATED": 6,
+            "ASSUMPTION": 2
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 11,
+        "messages_sent": 1,
+        "messages_delivered": 1,
+        "tool_calls": 13,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 1,
+        "simulated_tokens": 663
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "collusion vs collusion"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['trainee', 'provider']] vs [['trainee', 'provider']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'provider': 'colluder', 'trainee': 'colluder'} vs {'provider': 'colluder', 'trainee': 'colluder'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "variation vs variation"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{'MO-04': 'known', 'MO-05': 'variation'} vs {'MO-04': 'known', 'MO-05': 'variation'}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "3 vs 3"
+        },
+        {
+          "check": "card[0].disclaimer",
+          "passed": true,
+          "detail": "SIMULATED \u2013 NOT A FINDING OF FACT vs SIMULATED \u2013 NOT A FINDING OF FACT"
+        },
+        {
+          "check": "card[0].step_origin_fields_ok",
+          "passed": true,
+          "detail": "True vs True"
+        },
+        {
+          "check": "counts.gate_blocks>=1",
+          "passed": true,
+          "detail": "1"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "disc_s2_sponsor",
+      "mode": "discovery",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "collusion",
+          "feasible_subsets": [
+            [
+              "provider",
+              "employer"
+            ]
+          ],
+          "participants": {
+            "employer": "colluder",
+            "provider": "colluder",
+            "trainee": "unwitting"
+          },
+          "novelty": "known",
+          "mo_matches": {
+            "MO-08": "known"
+          },
+          "source_support": 0,
+          "origins": {
+            "SIMULATED": 8,
+            "SOURCE": 1,
+            "ASSUMPTION": 3
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 2,
+        "messages_delivered": 1,
+        "tool_calls": 15,
+        "denied_tool_calls": 1,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 645
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "collusion vs collusion"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['provider', 'employer']] vs [['provider', 'employer']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'employer': 'colluder', 'provider': 'colluder', 'trainee': 'unwitting'} vs {'employer': 'colluder', 'provider': 'colluder', 'trainee': 'unwitting'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "known vs known"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{'MO-08': 'known'} vs {'MO-08': 'known'}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "0 vs 0"
+        },
+        {
+          "check": "card[0].step_origin_fields_ok",
+          "passed": true,
+          "detail": "True vs True"
+        },
+        {
+          "check": "blocked:RELAY_UNWITTING_LEAK",
+          "passed": true,
+          "detail": "RELAY_UNWITTING_LEAK"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "disc_s4",
+      "mode": "discovery",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "single-actor",
+          "feasible_subsets": [
+            [
+              "provider"
+            ]
+          ],
+          "participants": {
+            "provider": "single_actor",
+            "trainee": "unwitting"
+          },
+          "novelty": "new",
+          "mo_matches": {},
+          "source_support": 1,
+          "origins": {
+            "SIMULATED": 5,
+            "SOURCE": 1,
+            "ASSUMPTION": 2
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 8,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 311
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "single-actor vs single-actor"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['provider']] vs [['provider']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'provider': 'single_actor', 'trainee': 'unwitting'} vs {'provider': 'single_actor', 'trainee': 'unwitting'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "new vs new"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{} vs {}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "1 vs 1"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "recall_mo03",
+      "mode": "recall",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "single-actor",
+          "feasible_subsets": [
+            [
+              "trainee"
+            ]
+          ],
+          "participants": {
+            "trainee": "single_actor"
+          },
+          "novelty": "known",
+          "mo_matches": {
+            "MO-03": "known"
+          },
+          "source_support": 2,
+          "origins": {
+            "SIMULATED": 2,
+            "SOURCE": 1,
+            "ASSUMPTION": 1
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 5,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 196
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "single-actor vs single-actor"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['trainee']] vs [['trainee']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'trainee': 'single_actor'} vs {'trainee': 'single_actor'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "known vs known"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{'MO-03': 'known'} vs {'MO-03': 'known'}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "2 vs 2"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "neg_s5",
+      "mode": "negative",
+      "final_state": "NO_SCHEME",
+      "cards": [],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 5,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 118
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "NO_SCHEME vs NO_SCHEME"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "adv_injected_s2",
+      "mode": "adversarial",
+      "final_state": "NO_SCHEME",
+      "cards": [],
+      "counts": {
+        "agent_calls": 11,
+        "messages_sent": 3,
+        "messages_delivered": 4,
+        "tool_calls": 13,
+        "denied_tool_calls": 6,
+        "refused_messages": 1,
+        "retries": 2,
+        "gate_blocks": 0,
+        "simulated_tokens": 361
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "NO_SCHEME vs NO_SCHEME"
+        },
+        {
+          "check": "counts.denied_tool_calls>=6",
+          "passed": true,
+          "detail": "6"
+        },
+        {
+          "check": "counts.retries==2",
+          "passed": true,
+          "detail": "2"
+        },
+        {
+          "check": "counts.refused_messages==1",
+          "passed": true,
+          "detail": "1"
+        },
+        {
+          "check": "blocked:ACTION_OUTSIDE_ROLE",
+          "passed": true,
+          "detail": "ACTION_OUTSIDE_ROLE:record_attendance,BAD_RECIPIENTS,MESSAGE_CAP,OBJECTIVE_REQUIRED_FROM_FIXED_LIST,RELAY_INJECTION_PATTERN,TOOL_NOT_ALLOWED:approve"
+        },
+        {
+          "check": "blocked:TOOL_NOT_ALLOWED",
+          "passed": true,
+          "detail": "ACTION_OUTSIDE_ROLE:record_attendance,BAD_RECIPIENTS,MESSAGE_CAP,OBJECTIVE_REQUIRED_FROM_FIXED_LIST,RELAY_INJECTION_PATTERN,TOOL_NOT_ALLOWED:approve"
+        },
+        {
+          "check": "blocked:RELAY_INJECTION_PATTERN",
+          "passed": true,
+          "detail": "ACTION_OUTSIDE_ROLE:record_attendance,BAD_RECIPIENTS,MESSAGE_CAP,OBJECTIVE_REQUIRED_FROM_FIXED_LIST,RELAY_INJECTION_PATTERN,TOOL_NOT_ALLOWED:approve"
+        },
+        {
+          "check": "blocked:MESSAGE_CAP",
+          "passed": true,
+          "detail": "ACTION_OUTSIDE_ROLE:record_attendance,BAD_RECIPIENTS,MESSAGE_CAP,OBJECTIVE_REQUIRED_FROM_FIXED_LIST,RELAY_INJECTION_PATTERN,TOOL_NOT_ALLOWED:approve"
+        },
+        {
+          "check": "blocked:OBJECTIVE_REQUIRED_FROM_FIXED_LIST",
+          "passed": true,
+          "detail": "ACTION_OUTSIDE_ROLE:record_attendance,BAD_RECIPIENTS,MESSAGE_CAP,OBJECTIVE_REQUIRED_FROM_FIXED_LIST,RELAY_INJECTION_PATTERN,TOOL_NOT_ALLOWED:approve"
+        },
+        {
+          "check": "blocked:BAD_RECIPIENTS",
+          "passed": true,
+          "detail": "ACTION_OUTSIDE_ROLE:record_attendance,BAD_RECIPIENTS,MESSAGE_CAP,OBJECTIVE_REQUIRED_FROM_FIXED_LIST,RELAY_INJECTION_PATTERN,TOOL_NOT_ALLOWED:approve"
+        },
+        {
+          "check": "recipient_filter_applied",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "neg_s1",
+      "mode": "negative",
+      "final_state": "NO_SCHEME",
+      "cards": [],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 5,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 119
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "NO_SCHEME vs NO_SCHEME"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "neg_s2",
+      "mode": "negative",
+      "final_state": "NO_SCHEME",
+      "cards": [],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 4,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 92
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "NO_SCHEME vs NO_SCHEME"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "recall_mo06",
+      "mode": "recall",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "single-actor",
+          "feasible_subsets": [
+            [
+              "employer"
+            ]
+          ],
+          "participants": {
+            "employer": "single_actor",
+            "provider": "unwitting",
+            "trainee": "unwitting"
+          },
+          "novelty": "known",
+          "mo_matches": {
+            "MO-06": "known"
+          },
+          "source_support": 2,
+          "origins": {
+            "SOURCE": 2,
+            "SIMULATED": 6,
+            "ASSUMPTION": 3
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 9,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 372
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "single-actor vs single-actor"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['employer']] vs [['employer']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'employer': 'single_actor', 'provider': 'unwitting', 'trainee': 'unwitting'} vs {'employer': 'single_actor', 'provider': 'unwitting', 'trainee': 'unwitting'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "known vs known"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{'MO-06': 'known'} vs {'MO-06': 'known'}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "2 vs 2"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "recall_mo01",
+      "mode": "recall",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "single-actor",
+          "feasible_subsets": [
+            [
+              "provider",
+              "employer"
+            ]
+          ],
+          "participants": {
+            "employer": "single_actor",
+            "provider": "single_actor",
+            "trainee": "unwitting"
+          },
+          "novelty": "known",
+          "mo_matches": {
+            "MO-01": "known"
+          },
+          "source_support": 2,
+          "origins": {
+            "SIMULATED": 7,
+            "SOURCE": 1,
+            "ASSUMPTION": 4
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 1,
+        "messages_delivered": 1,
+        "tool_calls": 11,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 443
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "single-actor vs single-actor"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['provider', 'employer']] vs [['provider', 'employer']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'employer': 'single_actor', 'provider': 'single_actor', 'trainee': 'unwitting'} vs {'employer': 'single_actor', 'provider': 'single_actor', 'trainee': 'unwitting'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "known vs known"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{'MO-01': 'known'} vs {'MO-01': 'known'}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "2 vs 2"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "recall_mo02_mo07",
+      "mode": "recall",
+      "final_state": "CARD_ISSUED",
+      "cards": [
+        {
+          "card_type": "single-actor",
+          "feasible_subsets": [
+            [
+              "provider"
+            ]
+          ],
+          "participants": {
+            "provider": "single_actor",
+            "trainee": "unwitting"
+          },
+          "novelty": "known",
+          "mo_matches": {
+            "MO-02": "known",
+            "MO-07": "known"
+          },
+          "source_support": 3,
+          "origins": {
+            "SIMULATED": 5,
+            "SOURCE": 2,
+            "ASSUMPTION": 2
+          },
+          "disclaimer": "SIMULATED \u2013 NOT A FINDING OF FACT",
+          "step_origin_fields_ok": true
+        }
+      ],
+      "counts": {
+        "agent_calls": 9,
+        "messages_sent": 0,
+        "messages_delivered": 0,
+        "tool_calls": 8,
+        "denied_tool_calls": 0,
+        "refused_messages": 0,
+        "retries": 0,
+        "gate_blocks": 0,
+        "simulated_tokens": 352
+      },
+      "checks": [
+        {
+          "check": "final_state",
+          "passed": true,
+          "detail": "CARD_ISSUED vs CARD_ISSUED"
+        },
+        {
+          "check": "card[0].card_type",
+          "passed": true,
+          "detail": "single-actor vs single-actor"
+        },
+        {
+          "check": "card[0].feasible_subsets",
+          "passed": true,
+          "detail": "[['provider']] vs [['provider']]"
+        },
+        {
+          "check": "card[0].participants",
+          "passed": true,
+          "detail": "{'provider': 'single_actor', 'trainee': 'unwitting'} vs {'provider': 'single_actor', 'trainee': 'unwitting'}"
+        },
+        {
+          "check": "card[0].novelty",
+          "passed": true,
+          "detail": "known vs known"
+        },
+        {
+          "check": "card[0].mo_matches",
+          "passed": true,
+          "detail": "{'MO-02': 'known', 'MO-07': 'known'} vs {'MO-02': 'known', 'MO-07': 'known'}"
+        },
+        {
+          "check": "card[0].source_support",
+          "passed": true,
+          "detail": "3 vs 3"
+        },
+        {
+          "check": "trace_hash_chain_valid",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "metrics": {
+    "scenarios_passed": "11/11",
+    "oracle_checks_passed": "79/79",
+    "final_state_accuracy": "11/11",
+    "cards_schema_valid": "100% (cards are validated Pydantic models)",
+    "manifest_chain_valid": true
+  },
+  "head_hash": "2339ef934ae56cb9516115151db73900ce79acffe5cbaee76d391310da69e6e2",
+  "passed": true
+}

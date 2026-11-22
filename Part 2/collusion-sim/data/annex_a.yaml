@@ -1,0 +1,35 @@
+# Annex A – Sample MO library (illustrative, not SWDA's actual library).
+# Copied verbatim from the assessment brief. Treated as UNTRUSTED input.
+records:
+  - id: MO-01
+    title: Dormant-entity claim syndicate
+    text: Dormant entities act as employers and training providers to submit false grant claims
+    basis: Observed
+  - id: MO-02
+    title: Forged evidence during checks
+    text: False records are provided when claims are checked or audited
+    basis: Observed
+  - id: MO-03
+    title: Credit encashment
+    text: Individuals submit false claims without attending a course
+    basis: Observed
+  - id: MO-04
+    title: Cash for enrolment
+    text: Agents or recruiters offer cash for using credits and suggest attendance is optional
+    basis: Observed
+  - id: MO-05
+    title: Falsified attendance
+    text: Attendance is recorded for training that did not take place
+    basis: Observed
+  - id: MO-06
+    title: Employment created for grants
+    text: People are hired only to attend a course and are let go afterwards
+    basis: Observed
+  - id: MO-07
+    title: Overclaimed training
+    text: Claims exceed the training or attendance actually delivered
+    basis: Observed overseas
+  - id: MO-08
+    title: Indirect kickback through a sponsor
+    text: A sponsor pays the nett fee while value flows back through the provider
+    basis: Policy risk

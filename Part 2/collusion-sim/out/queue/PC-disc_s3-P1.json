@@ -1,0 +1,398 @@
+{
+  "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+  "card_type": "collusion",
+  "pattern_id": "PC-disc_s3-P1",
+  "parent_pattern_id": null,
+  "run_id": "disc_s3-seed0",
+  "scenario_id": "disc_s3",
+  "scenario_mode": "discovery",
+  "versions": {
+    "schema": "card-v1",
+    "profiles": "profiles-v2",
+    "world": "world-v2",
+    "annotations": "annotations-v2",
+    "run": "run-v1"
+  },
+  "objective_id": "OBJ-1",
+  "objective_text": "Course claim paid with the attendance check passed, without training delivered",
+  "initial_state": [
+    "course_offered"
+  ],
+  "participants": [
+    {
+      "actor": "provider",
+      "role": "colluder",
+      "victim": false
+    },
+    {
+      "actor": "trainee",
+      "role": "colluder",
+      "victim": false
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "actor": "provider",
+      "action": "engage_recruiter",
+      "text": "Provider engages a recruiter to bring in enrolments",
+      "preconditions": [],
+      "effects": [
+        "recruiter_engaged"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 12
+    },
+    {
+      "index": 1,
+      "actor": "provider",
+      "action": "offer_cash_for_enrolment",
+      "text": "Recruiter offers a cash reward for using credits and suggests attendance is optional",
+      "preconditions": [
+        "recruiter_engaged"
+      ],
+      "effects": [
+        "cash_incentive_offered"
+      ],
+      "mechanisms": [
+        "cash_incentive_for_enrolment"
+      ],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 13
+    },
+    {
+      "index": 2,
+      "actor": "trainee",
+      "action": "enrol",
+      "text": "Trainee enrols and uses course credits after the recruiter's offer",
+      "preconditions": [
+        "course_offered"
+      ],
+      "effects": [
+        "enrolled"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 21
+    },
+    {
+      "index": 3,
+      "actor": "trainee",
+      "action": "confirm_attendance_without_attending",
+      "text": "Trainee confirms attendance for sessions not attended",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "attendance_signed"
+      ],
+      "mechanisms": [
+        "attendance_without_training"
+      ],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 22
+    },
+    {
+      "index": 4,
+      "actor": "provider",
+      "action": "record_attendance",
+      "text": "Provider records attendance for training that did not take place",
+      "preconditions": [
+        "enrolled"
+      ],
+      "effects": [
+        "attendance_recorded"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 36
+    },
+    {
+      "index": 5,
+      "actor": "provider",
+      "action": "submit_course_claim",
+      "text": "Provider submits the course claim",
+      "preconditions": [
+        "enrolled",
+        "attendance_recorded"
+      ],
+      "effects": [
+        "course_claim_submitted"
+      ],
+      "mechanisms": [],
+      "unwitting": false,
+      "origin": {
+        "action": "SIMULATED",
+        "text": "SIMULATED",
+        "preconditions": "ASSUMPTION",
+        "effects": "ASSUMPTION",
+        "mechanisms": "ASSUMPTION"
+      },
+      "trace_ref": 15
+    }
+  ],
+  "flows": [
+    {
+      "from": "provider",
+      "to": "trainee",
+      "type": "money",
+      "description": "Cash reward paid for the enrolment",
+      "visibility": "proposal",
+      "origin": "SIMULATED",
+      "trace_ref": 13
+    },
+    {
+      "from": "trainee",
+      "to": "provider",
+      "type": "value",
+      "description": "Course credits used for the enrolment",
+      "visibility": "proposal",
+      "origin": "SIMULATED",
+      "trace_ref": 21
+    },
+    {
+      "from": "provider",
+      "to": "claims_system",
+      "type": "documents",
+      "description": "Attendance record submitted with the claim",
+      "visibility": "proposal",
+      "origin": "SIMULATED",
+      "trace_ref": 15
+    }
+  ],
+  "benefits": [
+    {
+      "actor": "provider",
+      "description": "Funded enrolments and fee claims",
+      "origin": "SIMULATED"
+    },
+    {
+      "actor": "trainee",
+      "description": "Cash reward for using credits",
+      "origin": "SIMULATED"
+    }
+  ],
+  "feasible_subsets": [
+    [
+      "trainee",
+      "provider"
+    ]
+  ],
+  "feasible_subsets_origin": "ASSUMPTION",
+  "related_party": [],
+  "effective_subsets": [
+    [
+      "provider",
+      "trainee"
+    ]
+  ],
+  "statements": [
+    {
+      "text": "mentioned a cash reward",
+      "origin": "SOURCE",
+      "author": "us",
+      "source_id": "S3",
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "Provider engages a recruiter to bring in enrolments",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [
+        {
+          "source_id": "S3",
+          "span": "mentioned a cash reward",
+          "verdict": "supports",
+          "note": null
+        }
+      ],
+      "depends_on_assumptions": [
+        "action:engage_recruiter"
+      ],
+      "trace_ref": 12
+    },
+    {
+      "text": "use her credits",
+      "origin": "SOURCE",
+      "author": "us",
+      "source_id": "S3",
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "Recruiter offers a cash reward for using credits and suggests attendance is optional",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [
+        {
+          "source_id": "S3",
+          "span": "use her credits",
+          "verdict": "supports",
+          "note": null
+        }
+      ],
+      "depends_on_assumptions": [
+        "action:offer_cash_for_enrolment"
+      ],
+      "trace_ref": 13
+    },
+    {
+      "text": "Trainee enrols and uses course credits after the recruiter's offer",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:enrol"
+      ],
+      "trace_ref": 21
+    },
+    {
+      "text": "Trainee confirms attendance for sessions not attended",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:confirm_attendance_without_attending"
+      ],
+      "trace_ref": 22
+    },
+    {
+      "text": "Provider records attendance for training that did not take place",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:record_attendance"
+      ],
+      "trace_ref": 36
+    },
+    {
+      "text": "Provider submits the course claim",
+      "origin": "SIMULATED",
+      "author": "actor",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [
+        "action:submit_course_claim"
+      ],
+      "trace_ref": 15
+    },
+    {
+      "text": "provider goal (profile): Keep enrolments funded and fees paid",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    },
+    {
+      "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+      "origin": "ASSUMPTION",
+      "author": "us",
+      "source_id": null,
+      "supported_by": [],
+      "depends_on_assumptions": [],
+      "trace_ref": null
+    }
+  ],
+  "assumptions": [
+    "Objective OBJ-1: Course claim paid with the attendance check passed, without training delivered (world world-v2)",
+    "Preconditions, effects and SWDA checks come from our action library and world model",
+    "MO annotations annotations-v2 are our interpretation of Annex A",
+    "feasible_subsets is derived from the action library, not from agent behaviour"
+  ],
+  "mo_matches": [
+    {
+      "mo_id": "MO-04",
+      "relation": "known",
+      "basis": "Observed"
+    },
+    {
+      "mo_id": "MO-05",
+      "relation": "variation",
+      "basis": "Observed"
+    }
+  ],
+  "novelty": "variation",
+  "source_support": 3,
+  "realism": {
+    "passed": true,
+    "codes": []
+  },
+  "screening_signals": [
+    {
+      "text": "Clusters of enrolments linked to one recruiter with unusually low course engagement",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "data_needed_for_testing": [
+    {
+      "text": "Enrolment records with the recruiter or referral source",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    },
+    {
+      "text": "Attendance records alongside trainee confirmations and claim submissions",
+      "origin": "ASSUMPTION",
+      "author": "review_agent"
+    }
+  ],
+  "review_notes": [],
+  "safety_gate": {
+    "stage": "full",
+    "blocked": false,
+    "codes": [],
+    "classifier": {
+      "result": "pass",
+      "demonstrated": false
+    }
+  },
+  "built_by": "d1346019",
+  "status": "pending_human_review"
+}
