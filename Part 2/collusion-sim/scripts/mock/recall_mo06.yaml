@@ -1,0 +1,43 @@
+# Recall run (evaluation only) for MO-06. The Employer acts alone; the trainee and the
+# provider take part unwittingly. Expected: single-actor card, MO-06 known.
+agents:
+  trainee:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  provider:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  employer:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: hire_only_for_course, text: Employer could hire someone for a course}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-5
+              action: hire_only_for_course
+              text: Employer hires a person only so that they attend a course
+              benefit: Grant support for a short-term hire
+              cites: [{source_id: MO-06, span: People are hired only to attend a course}]
+          - {tool: propose_contribution, args: {proposal_id: P1, action: confirm_employment, text: Employer confirms the employment}}
+          - tool: propose_contribution
+            args: {proposal_id: P1, action: release_after_course, text: Employer lets the person go after the course, cites: [{source_id: MO-06, span: are let go afterwards}]}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: enrol, text: The new hire is enrolled}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: attend, text: The new hire attends the course}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: provider, action: deliver_course, text: Provider delivers the course as normal}}
+    R3: []
+review:
+  default:
+    verdicts:
+      - {action: hire_only_for_course, source_id: MO-06, verdict: supports}
+      - {action: release_after_course, source_id: MO-06, verdict: supports}
+    screening_signals:
+      - Employments that start shortly before a funded course and end soon after it
+    data_needed:
+      - Employment start and end dates alongside course dates and employer grant claims

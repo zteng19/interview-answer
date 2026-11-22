@@ -1,0 +1,40 @@
+# Recall run (evaluation only): actors see MO-03. Expected: single-actor card, known MO-03.
+agents:
+  trainee:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: submit_credit_claim, text: Trainee could claim credits}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-2
+              action: enrol
+              text: Trainee enrols in a course
+              benefit: Credits turned into a payout
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: submit_credit_claim
+              text: Trainee submits a credit claim without attending the course
+              cites: [{source_id: MO-03, span: submit false claims without attending a course}]
+    R3: []
+  provider:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  employer:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+review:
+  default:
+    verdicts:
+      - {action: submit_credit_claim, source_id: MO-03, verdict: supports}
+    screening_signals:
+      - Credit claims with no matching attendance evidence
+    data_needed:
+      - Credit claims alongside course attendance records

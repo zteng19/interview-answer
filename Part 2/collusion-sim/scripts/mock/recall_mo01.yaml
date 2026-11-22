@@ -1,0 +1,50 @@
+# Recall run (evaluation only) for MO-01 with the related_party parameter: one owner
+# controls both the provider and the employer. Expected: the two roles collapse to one
+# effective actor → single-actor card, MO-01 known.
+agents:
+  trainee:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  provider:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: submit_course_claim, text: Provider could submit sponsored claims}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-6
+              action: record_attendance
+              text: Provider entity records attendance for the sponsored trainee
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: submit_course_claim
+              text: Provider entity submits the grant claim
+              benefit: Course fees paid through the claim
+              cites: [{source_id: MO-01, span: act as employers and training providers to submit false grant claims}]
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: enrol, text: A trainee is enrolled}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: attend, text: The trainee attends}}
+          - tool: send_message
+            args: {channel: private, to: [employer], proposal_ref: P1, body: "P1: the employer entity hires, confirms employment and sponsors the fee."}
+  employer:
+    R1: [{tool_calls: []}]
+    R2:
+      - tool_calls:
+          - {tool: propose_contribution, args: {proposal_id: P1, action: hire, text: Employer entity hires the trainee}}
+          - {tool: propose_contribution, args: {proposal_id: P1, action: confirm_employment, text: Employer entity confirms the employment}}
+          - tool: propose_contribution
+            args: {proposal_id: P1, action: sponsor_fee, text: Employer entity sponsors the fee, benefit: Grant support for the sponsored place}
+    R3:
+      - tool_calls: [{tool: accept, args: {proposal_id: P1}}]
+review:
+  default:
+    verdicts:
+      - {action: submit_course_claim, source_id: MO-01, verdict: supports}
+    screening_signals:
+      - Providers and employers with shared ownership or contact details claiming for the same trainees
+    data_needed:
+      - Ownership and registration records for providers and employers alongside their claims

@@ -1,0 +1,424 @@
+{
+  "cards": [
+    {
+      "assumptions": [
+        "Objective OBJ-5: Employer grant paid for someone hired only to attend a course and let go afterwards (world world-v2)",
+        "Preconditions, effects and SWDA checks come from our action library and world model",
+        "MO annotations annotations-v2 are our interpretation of Annex A",
+        "feasible_subsets is derived from the action library, not from agent behaviour"
+      ],
+      "benefits": [
+        {
+          "actor": "employer",
+          "description": "Grant support for a short-term hire",
+          "origin": "SIMULATED"
+        }
+      ],
+      "card_type": "single-actor",
+      "data_needed_for_testing": [
+        {
+          "author": "review_agent",
+          "origin": "ASSUMPTION",
+          "text": "Employment start and end dates alongside course dates and employer grant claims"
+        }
+      ],
+      "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+      "effective_subsets": [
+        [
+          "employer"
+        ]
+      ],
+      "feasible_subsets": [
+        [
+          "employer"
+        ]
+      ],
+      "feasible_subsets_origin": "ASSUMPTION",
+      "flows": [],
+      "initial_state": [
+        "course_offered"
+      ],
+      "mo_matches": [
+        {
+          "basis": "Observed",
+          "mo_id": "MO-06",
+          "relation": "known"
+        }
+      ],
+      "novelty": "known",
+      "objective_id": "OBJ-5",
+      "objective_text": "Employer grant paid for someone hired only to attend a course and let go afterwards",
+      "parent_pattern_id": null,
+      "participants": [
+        {
+          "actor": "employer",
+          "role": "single_actor",
+          "victim": false
+        },
+        {
+          "actor": "provider",
+          "role": "unwitting",
+          "victim": false
+        },
+        {
+          "actor": "trainee",
+          "role": "unwitting",
+          "victim": false
+        }
+      ],
+      "pattern_id": "PC-recall_mo06-P1",
+      "realism": {
+        "codes": [],
+        "passed": true
+      },
+      "related_party": [],
+      "review_notes": [],
+      "safety_gate": {
+        "blocked": false,
+        "classifier": {
+          "demonstrated": false,
+          "result": "pass"
+        },
+        "codes": [],
+        "stage": "full"
+      },
+      "scenario_id": "recall_mo06",
+      "scenario_mode": "recall",
+      "screening_signals": [
+        {
+          "author": "review_agent",
+          "origin": "ASSUMPTION",
+          "text": "Employments that start shortly before a funded course and end soon after it"
+        }
+      ],
+      "source_support": 2,
+      "statements": [
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "SOURCE",
+          "source_id": "MO-06",
+          "supported_by": [],
+          "text": "People are hired only to attend a course",
+          "trace_ref": null
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:hire_only_for_course"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [
+            {
+              "note": null,
+              "source_id": "MO-06",
+              "span": "People are hired only to attend a course",
+              "verdict": "supports"
+            }
+          ],
+          "text": "Employer hires a person only so that they attend a course",
+          "trace_ref": 11
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:confirm_employment"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Employer confirms the employment",
+          "trace_ref": 12
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:enrol"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "The new hire is enrolled",
+          "trace_ref": 14
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:attend"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "The new hire attends the course",
+          "trace_ref": 15
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:deliver_course"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Provider delivers the course as normal",
+          "trace_ref": 16
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "SOURCE",
+          "source_id": "MO-06",
+          "supported_by": [],
+          "text": "are let go afterwards",
+          "trace_ref": null
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:release_after_course"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [
+            {
+              "note": null,
+              "source_id": "MO-06",
+              "span": "are let go afterwards",
+              "verdict": "supports"
+            }
+          ],
+          "text": "Employer lets the person go after the course",
+          "trace_ref": 13
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "employer goal (profile): Lower staff costs and obtain grant or sponsorship benefits",
+          "trace_ref": null
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "provider goal (profile): Keep enrolments funded and fees paid",
+          "trace_ref": null
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+          "trace_ref": null
+        }
+      ],
+      "status": "pending_human_review",
+      "steps": [
+        {
+          "action": "hire_only_for_course",
+          "actor": "employer",
+          "effects": [
+            "employed",
+            "hired_for_course_only"
+          ],
+          "index": 0,
+          "mechanisms": [
+            "hire_for_course_only"
+          ],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [],
+          "text": "Employer hires a person only so that they attend a course",
+          "trace_ref": 11,
+          "unwitting": false
+        },
+        {
+          "action": "confirm_employment",
+          "actor": "employer",
+          "effects": [
+            "employment_confirmed"
+          ],
+          "index": 1,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "employed"
+          ],
+          "text": "Employer confirms the employment",
+          "trace_ref": 12,
+          "unwitting": false
+        },
+        {
+          "action": "enrol",
+          "actor": "trainee",
+          "effects": [
+            "enrolled"
+          ],
+          "index": 2,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "course_offered"
+          ],
+          "text": "The new hire is enrolled",
+          "trace_ref": 14,
+          "unwitting": true
+        },
+        {
+          "action": "attend",
+          "actor": "trainee",
+          "effects": [
+            "attended",
+            "attendance_signed"
+          ],
+          "index": 3,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled"
+          ],
+          "text": "The new hire attends the course",
+          "trace_ref": 15,
+          "unwitting": true
+        },
+        {
+          "action": "deliver_course",
+          "actor": "provider",
+          "effects": [
+            "course_completed"
+          ],
+          "index": 4,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled",
+            "attended"
+          ],
+          "text": "Provider delivers the course as normal",
+          "trace_ref": 16,
+          "unwitting": true
+        },
+        {
+          "action": "release_after_course",
+          "actor": "employer",
+          "effects": [
+            "released"
+          ],
+          "index": 5,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "employed",
+            "course_completed"
+          ],
+          "text": "Employer lets the person go after the course",
+          "trace_ref": 13,
+          "unwitting": false
+        }
+      ],
+      "versions": {
+        "annotations": "annotations-v2",
+        "profiles": "profiles-v2",
+        "run": "run-v1",
+        "schema": "card-v1",
+        "world": "world-v2"
+      }
+    }
+  ],
+  "event_kinds": [
+    "run_start",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "offers_revealed",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "agent_call",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "tool_call",
+    "commit_evaluated",
+    "realism",
+    "planner",
+    "gate",
+    "review",
+    "gate",
+    "handoff"
+  ],
+  "final_state": "CARD_ISSUED",
+  "report": {
+    "card_ids": [
+      "PC-recall_mo06-P1"
+    ],
+    "counts": {
+      "agent_calls": 9,
+      "denied_tool_calls": 0,
+      "gate_blocks": 0,
+      "messages_delivered": 0,
+      "messages_sent": 0,
+      "refused_messages": 0,
+      "retries": 0,
+      "simulated_tokens": 372,
+      "tool_calls": 9
+    },
+    "final_state": "CARD_ISSUED",
+    "reason_codes": [],
+    "rounds_used": 3,
+    "scenario_id": "recall_mo06",
+    "trace_ref": "traces/recall_mo06-seed0.jsonl"
+  }
+}

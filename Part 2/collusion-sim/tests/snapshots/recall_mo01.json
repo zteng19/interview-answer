@@ -1,0 +1,459 @@
+{
+  "cards": [
+    {
+      "assumptions": [
+        "Objective OBJ-6: Sponsored grant claim paid through a provider and an employer (world world-v2)",
+        "Preconditions, effects and SWDA checks come from our action library and world model",
+        "MO annotations annotations-v2 are our interpretation of Annex A",
+        "feasible_subsets is derived from the action library, not from agent behaviour"
+      ],
+      "benefits": [
+        {
+          "actor": "provider",
+          "description": "Course fees paid through the claim",
+          "origin": "SIMULATED"
+        },
+        {
+          "actor": "employer",
+          "description": "Grant support for the sponsored place",
+          "origin": "SIMULATED"
+        }
+      ],
+      "card_type": "single-actor",
+      "data_needed_for_testing": [
+        {
+          "author": "review_agent",
+          "origin": "ASSUMPTION",
+          "text": "Ownership and registration records for providers and employers alongside their claims"
+        }
+      ],
+      "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+      "effective_subsets": [
+        [
+          "employer+provider"
+        ]
+      ],
+      "feasible_subsets": [
+        [
+          "provider",
+          "employer"
+        ]
+      ],
+      "feasible_subsets_origin": "ASSUMPTION",
+      "flows": [],
+      "initial_state": [
+        "course_offered"
+      ],
+      "mo_matches": [
+        {
+          "basis": "Observed",
+          "mo_id": "MO-01",
+          "relation": "known"
+        }
+      ],
+      "novelty": "known",
+      "objective_id": "OBJ-6",
+      "objective_text": "Sponsored grant claim paid through a provider and an employer",
+      "parent_pattern_id": null,
+      "participants": [
+        {
+          "actor": "employer",
+          "role": "single_actor",
+          "victim": false
+        },
+        {
+          "actor": "provider",
+          "role": "single_actor",
+          "victim": false
+        },
+        {
+          "actor": "trainee",
+          "role": "unwitting",
+          "victim": false
+        }
+      ],
+      "pattern_id": "PC-recall_mo01-P1",
+      "realism": {
+        "codes": [],
+        "passed": true
+      },
+      "related_party": [
+        "provider",
+        "employer"
+      ],
+      "review_notes": [],
+      "safety_gate": {
+        "blocked": false,
+        "classifier": {
+          "demonstrated": false,
+          "result": "pass"
+        },
+        "codes": [],
+        "stage": "full"
+      },
+      "scenario_id": "recall_mo01",
+      "scenario_mode": "recall",
+      "screening_signals": [
+        {
+          "author": "review_agent",
+          "origin": "ASSUMPTION",
+          "text": "Providers and employers with shared ownership or contact details claiming for the same trainees"
+        }
+      ],
+      "source_support": 2,
+      "statements": [
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:enrol"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "A trainee is enrolled",
+          "trace_ref": 12
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:record_attendance"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Provider entity records attendance for the sponsored trainee",
+          "trace_ref": 10
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "SOURCE",
+          "source_id": "MO-01",
+          "supported_by": [],
+          "text": "act as employers and training providers to submit false grant claims",
+          "trace_ref": null
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:submit_course_claim"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [
+            {
+              "note": null,
+              "source_id": "MO-01",
+              "span": "act as employers and training providers to submit false grant claims",
+              "verdict": "supports"
+            }
+          ],
+          "text": "Provider entity submits the grant claim",
+          "trace_ref": 11
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:attend"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "The trainee attends",
+          "trace_ref": 13
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:hire"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Employer entity hires the trainee",
+          "trace_ref": 18
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:confirm_employment"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Employer entity confirms the employment",
+          "trace_ref": 19
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:sponsor_fee"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Employer entity sponsors the fee",
+          "trace_ref": 20
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "employer goal (profile): Lower staff costs and obtain grant or sponsorship benefits",
+          "trace_ref": null
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "provider goal (profile): Keep enrolments funded and fees paid",
+          "trace_ref": null
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+          "trace_ref": null
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Scenario parameter: provider and employer are under common control, so they count as one effective actor",
+          "trace_ref": null
+        }
+      ],
+      "status": "pending_human_review",
+      "steps": [
+        {
+          "action": "enrol",
+          "actor": "trainee",
+          "effects": [
+            "enrolled"
+          ],
+          "index": 0,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "course_offered"
+          ],
+          "text": "A trainee is enrolled",
+          "trace_ref": 12,
+          "unwitting": true
+        },
+        {
+          "action": "record_attendance",
+          "actor": "provider",
+          "effects": [
+            "attendance_recorded"
+          ],
+          "index": 1,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled"
+          ],
+          "text": "Provider entity records attendance for the sponsored trainee",
+          "trace_ref": 10,
+          "unwitting": false
+        },
+        {
+          "action": "submit_course_claim",
+          "actor": "provider",
+          "effects": [
+            "course_claim_submitted"
+          ],
+          "index": 2,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled",
+            "attendance_recorded"
+          ],
+          "text": "Provider entity submits the grant claim",
+          "trace_ref": 11,
+          "unwitting": false
+        },
+        {
+          "action": "attend",
+          "actor": "trainee",
+          "effects": [
+            "attended",
+            "attendance_signed"
+          ],
+          "index": 3,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled"
+          ],
+          "text": "The trainee attends",
+          "trace_ref": 13,
+          "unwitting": true
+        },
+        {
+          "action": "hire",
+          "actor": "employer",
+          "effects": [
+            "employed"
+          ],
+          "index": 4,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [],
+          "text": "Employer entity hires the trainee",
+          "trace_ref": 18,
+          "unwitting": false
+        },
+        {
+          "action": "confirm_employment",
+          "actor": "employer",
+          "effects": [
+            "employment_confirmed"
+          ],
+          "index": 5,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "employed"
+          ],
+          "text": "Employer entity confirms the employment",
+          "trace_ref": 19,
+          "unwitting": false
+        },
+        {
+          "action": "sponsor_fee",
+          "actor": "employer",
+          "effects": [
+            "fee_paid"
+          ],
+          "index": 6,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled"
+          ],
+          "text": "Employer entity sponsors the fee",
+          "trace_ref": 20,
+          "unwitting": false
+        }
+      ],
+      "versions": {
+        "annotations": "annotations-v2",
+        "profiles": "profiles-v2",
+        "run": "run-v1",
+        "schema": "card-v1",
+        "world": "world-v2"
+      }
+    }
+  ],
+  "event_kinds": [
+    "run_start",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "offers_revealed",
+    "round_start",
+    "agent_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "message_sent",
+    "message_delivered",
+    "tool_call",
+    "agent_call",
+    "tool_call",
+    "tool_call",
+    "tool_call",
+    "agent_call",
+    "round_start",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "commit_evaluated",
+    "realism",
+    "planner",
+    "gate",
+    "review",
+    "gate",
+    "handoff"
+  ],
+  "final_state": "CARD_ISSUED",
+  "report": {
+    "card_ids": [
+      "PC-recall_mo01-P1"
+    ],
+    "counts": {
+      "agent_calls": 9,
+      "denied_tool_calls": 0,
+      "gate_blocks": 0,
+      "messages_delivered": 1,
+      "messages_sent": 1,
+      "refused_messages": 0,
+      "retries": 0,
+      "simulated_tokens": 443,
+      "tool_calls": 11
+    },
+    "final_state": "CARD_ISSUED",
+    "reason_codes": [],
+    "rounds_used": 3,
+    "scenario_id": "recall_mo01",
+    "trace_ref": "traces/recall_mo01-seed0.jsonl"
+  }
+}

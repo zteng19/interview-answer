@@ -1,0 +1,20 @@
+# Negative control (S2 alone, no scenario parameters, honest propensity). A high fee is
+# not misuse by itself. Expected: NO_SCHEME. (disc_s2_sponsor adds the sponsor parameter.)
+agents:
+  trainee:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  provider:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: run_course, text: Provider runs a basic cleaning course}}
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  employer:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]

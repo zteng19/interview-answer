@@ -1,0 +1,39 @@
+# Scripted mock for discovery scenario disc_s4. The Provider commits a SOLO scheme;
+# the Trainee steps are can_be_unwitting. Expected: single-actor card, novelty "new".
+agents:
+  trainee:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  provider:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: record_results_regardless_of_performance, text: Provider could keep pass rates high}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-4
+              action: record_results_regardless_of_performance
+              text: Provider records passing results regardless of performance
+              benefit: Funding retained by keeping pass rates high
+              cites: [{source_id: S4, span: Nobody in my class ever fails}]
+          - {tool: propose_contribution, args: {proposal_id: P1, action: record_attendance, text: Provider records attendance}}
+          - {tool: propose_contribution, args: {proposal_id: P1, action: submit_course_claim, text: Provider submits the course claim}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: enrol, text: Trainee enrols}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: attend, text: Trainee attends}}
+  employer:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+review:
+  default:
+    verdicts:
+      - {action: record_results_regardless_of_performance, source_id: S4, verdict: supports}
+    screening_signals:
+      - Courses where pass rates stay near 100% across many intakes
+    data_needed:
+      - Assessment results by course and intake alongside claim submissions

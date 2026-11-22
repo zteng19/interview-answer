@@ -1,0 +1,240 @@
+{
+  "cards": [
+    {
+      "assumptions": [
+        "Objective OBJ-2: Credit claim paid without attending the course (world world-v2)",
+        "Preconditions, effects and SWDA checks come from our action library and world model",
+        "MO annotations annotations-v2 are our interpretation of Annex A",
+        "feasible_subsets is derived from the action library, not from agent behaviour"
+      ],
+      "benefits": [
+        {
+          "actor": "trainee",
+          "description": "Credits turned into a payout",
+          "origin": "SIMULATED"
+        }
+      ],
+      "card_type": "single-actor",
+      "data_needed_for_testing": [
+        {
+          "author": "review_agent",
+          "origin": "ASSUMPTION",
+          "text": "Credit claims alongside course attendance records"
+        }
+      ],
+      "disclaimer": "SIMULATED – NOT A FINDING OF FACT",
+      "effective_subsets": [
+        [
+          "trainee"
+        ]
+      ],
+      "feasible_subsets": [
+        [
+          "trainee"
+        ]
+      ],
+      "feasible_subsets_origin": "ASSUMPTION",
+      "flows": [],
+      "initial_state": [
+        "course_offered"
+      ],
+      "mo_matches": [
+        {
+          "basis": "Observed",
+          "mo_id": "MO-03",
+          "relation": "known"
+        }
+      ],
+      "novelty": "known",
+      "objective_id": "OBJ-2",
+      "objective_text": "Credit claim paid without attending the course",
+      "parent_pattern_id": null,
+      "participants": [
+        {
+          "actor": "trainee",
+          "role": "single_actor",
+          "victim": false
+        }
+      ],
+      "pattern_id": "PC-recall_mo03-P1",
+      "realism": {
+        "codes": [],
+        "passed": true
+      },
+      "related_party": [],
+      "review_notes": [],
+      "safety_gate": {
+        "blocked": false,
+        "classifier": {
+          "demonstrated": false,
+          "result": "pass"
+        },
+        "codes": [],
+        "stage": "full"
+      },
+      "scenario_id": "recall_mo03",
+      "scenario_mode": "recall",
+      "screening_signals": [
+        {
+          "author": "review_agent",
+          "origin": "ASSUMPTION",
+          "text": "Credit claims with no matching attendance evidence"
+        }
+      ],
+      "source_support": 2,
+      "statements": [
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:enrol"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [],
+          "text": "Trainee enrols in a course",
+          "trace_ref": 12
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "SOURCE",
+          "source_id": "MO-03",
+          "supported_by": [],
+          "text": "submit false claims without attending a course",
+          "trace_ref": null
+        },
+        {
+          "author": "actor",
+          "depends_on_assumptions": [
+            "action:submit_credit_claim"
+          ],
+          "origin": "SIMULATED",
+          "source_id": null,
+          "supported_by": [
+            {
+              "note": null,
+              "source_id": "MO-03",
+              "span": "submit false claims without attending a course",
+              "verdict": "supports"
+            }
+          ],
+          "text": "Trainee submits a credit claim without attending the course",
+          "trace_ref": 13
+        },
+        {
+          "author": "us",
+          "depends_on_assumptions": [],
+          "origin": "ASSUMPTION",
+          "source_id": null,
+          "supported_by": [],
+          "text": "trainee goal (profile): Obtain course credits or a cash benefit for the least effort",
+          "trace_ref": null
+        }
+      ],
+      "status": "pending_human_review",
+      "steps": [
+        {
+          "action": "enrol",
+          "actor": "trainee",
+          "effects": [
+            "enrolled"
+          ],
+          "index": 0,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "course_offered"
+          ],
+          "text": "Trainee enrols in a course",
+          "trace_ref": 12,
+          "unwitting": false
+        },
+        {
+          "action": "submit_credit_claim",
+          "actor": "trainee",
+          "effects": [
+            "credit_claim_submitted"
+          ],
+          "index": 1,
+          "mechanisms": [],
+          "origin": {
+            "action": "SIMULATED",
+            "effects": "ASSUMPTION",
+            "mechanisms": "ASSUMPTION",
+            "preconditions": "ASSUMPTION",
+            "text": "SIMULATED"
+          },
+          "preconditions": [
+            "enrolled"
+          ],
+          "text": "Trainee submits a credit claim without attending the course",
+          "trace_ref": 13,
+          "unwitting": false
+        }
+      ],
+      "versions": {
+        "annotations": "annotations-v2",
+        "profiles": "profiles-v2",
+        "run": "run-v1",
+        "schema": "card-v1",
+        "world": "world-v2"
+      }
+    }
+  ],
+  "event_kinds": [
+    "run_start",
+    "round_start",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "agent_call",
+    "offers_revealed",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "tool_call",
+    "round_start",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "commit_evaluated",
+    "realism",
+    "planner",
+    "gate",
+    "review",
+    "gate",
+    "handoff"
+  ],
+  "final_state": "CARD_ISSUED",
+  "report": {
+    "card_ids": [
+      "PC-recall_mo03-P1"
+    ],
+    "counts": {
+      "agent_calls": 9,
+      "denied_tool_calls": 0,
+      "gate_blocks": 0,
+      "messages_delivered": 0,
+      "messages_sent": 0,
+      "refused_messages": 0,
+      "retries": 0,
+      "simulated_tokens": 196,
+      "tool_calls": 5
+    },
+    "final_state": "CARD_ISSUED",
+    "reason_codes": [],
+    "rounds_used": 3,
+    "scenario_id": "recall_mo03",
+    "trace_ref": "traces/recall_mo03-seed0.jsonl"
+  }
+}

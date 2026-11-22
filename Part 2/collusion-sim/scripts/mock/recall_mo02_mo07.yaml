@@ -1,0 +1,47 @@
+# MO-combo recall run (evaluation only): MO-07 overclaiming combined with MO-02 false
+# records at audit. The trainee attends unwittingly. Expected: single-actor card;
+# MO-02 and MO-07 both known.
+agents:
+  trainee:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  provider:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: claim_more_than_delivered, text: Provider could claim more than it delivers}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-7
+              action: claim_more_than_delivered
+              text: Provider claims for more training than was delivered
+              benefit: Funding for training not delivered
+              cites: [{source_id: MO-07, span: Claims exceed the training or attendance actually delivered}]
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: present_false_records_at_audit
+              text: Provider presents false records when the claim is audited
+              cites: [{source_id: MO-02, span: False records are provided when claims are checked or audited}]
+          - {tool: propose_contribution, args: {proposal_id: P1, action: record_attendance, text: Provider records attendance}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: enrol, text: A trainee enrols}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: attend, text: The trainee attends part of the course}}
+    R3: []
+  employer:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+review:
+  default:
+    verdicts:
+      - {action: claim_more_than_delivered, source_id: MO-07, verdict: supports}
+      - {action: present_false_records_at_audit, source_id: MO-02, verdict: supports}
+    screening_signals:
+      - Claimed training hours that exceed recorded session capacity
+    data_needed:
+      - Claimed hours alongside session schedules and audit findings

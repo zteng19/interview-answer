@@ -1,0 +1,44 @@
+{
+  "cards": [],
+  "event_kinds": [
+    "run_start",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "offers_revealed",
+    "round_start",
+    "agent_call",
+    "agent_call",
+    "agent_call",
+    "round_start",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "tool_call",
+    "agent_call",
+    "tool_call",
+    "handoff"
+  ],
+  "final_state": "NO_SCHEME",
+  "report": {
+    "card_ids": [],
+    "counts": {
+      "agent_calls": 9,
+      "denied_tool_calls": 0,
+      "gate_blocks": 0,
+      "messages_delivered": 0,
+      "messages_sent": 0,
+      "refused_messages": 0,
+      "retries": 0,
+      "simulated_tokens": 92,
+      "tool_calls": 4
+    },
+    "final_state": "NO_SCHEME",
+    "reason_codes": [],
+    "rounds_used": 3,
+    "scenario_id": "neg_s2",
+    "trace_ref": "traces/neg_s2-seed0.jsonl"
+  }
+}

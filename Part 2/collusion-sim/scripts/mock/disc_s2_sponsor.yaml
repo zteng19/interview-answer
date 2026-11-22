@@ -1,0 +1,75 @@
+# Scripted mock for discovery scenario disc_s2_sponsor (S2 + sponsor parameter).
+# Provider and Employer collude over private channels; the Trainee's steps are
+# can_be_unwitting and the Trainee never sees the proposal. One attempted leak of the
+# proposal to the Trainee is blocked by the relay check.
+agents:
+  trainee:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: attend, text: Trainee is willing to attend a sponsored course}}
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+  provider:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: record_attendance, text: Provider runs and records sponsored courses}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-3
+              action: record_attendance
+              text: Provider records attendance for the sponsored trainee
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: submit_course_claim
+              text: Provider submits the course claim for the sponsored enrolment
+              cites: [{source_id: S2, span: Almost $600 for basic cleaning training}]
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: return_value_to_sponsor
+              text: Provider passes part of the fee value back to the sponsor
+              benefit: Secures the sponsored enrolment and its fee
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: enrol, text: Trainee is enrolled in the sponsored course}}
+          - {tool: propose_contribution, args: {proposal_id: P1, actor: trainee, action: attend, text: Trainee attends the course}}
+          - tool: send_message
+            args:
+              channel: private
+              to: [employer]
+              proposal_ref: P1
+              body: "Proposal P1: you sponsor the nett fee and part of the value comes back to you."
+              flows: [{from: provider, to: employer, type: value, description: Part of the fee value returned to the sponsor}]
+          - tool: send_message
+            args: {channel: private, to: [trainee], proposal_ref: P1, body: "FYI about P1."}
+  employer:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: sponsor_fee, text: Employer could sponsor staff training}}
+    R2:
+      - tool_calls:
+          - {tool: propose_contribution, args: {proposal_id: P1, action: hire, text: Employer hires the trainee}}
+          - {tool: propose_contribution, args: {proposal_id: P1, action: confirm_employment, text: Employer confirms the trainee's employment}}
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: sponsor_fee
+              text: Employer sponsors the nett course fee
+              benefit: Value returned through the provider
+              flows: [{from: employer, to: provider, type: money, description: Sponsor pays the nett fee}]
+    R3:
+      - tool_calls: [{tool: accept, args: {proposal_id: P1}}]
+review:
+  default:
+    verdicts:
+      - {action: submit_course_claim, source_id: S2, verdict: partial}
+    notes:
+      - S2 only questions the fee level; it does not show value flowing back
+    screening_signals:
+      - Sponsored enrolments where fee levels are high relative to course content
+    data_needed:
+      - Sponsor fee payments alongside provider payments to the same sponsor
+      - Employment records for sponsored trainees around course dates

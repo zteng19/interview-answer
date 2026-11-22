@@ -1,0 +1,76 @@
+# Scripted mock for discovery scenario disc_s3 (seeded by S3).
+# Turn order with rng_seed 0: R1 trainee→provider→employer, R2 provider→employer→trainee,
+# R3 employer→trainee→provider. The first draft of one step is too concrete, so the
+# safety gate's pre-check asks for one revision (R4).
+agents:
+  trainee:
+    R1:
+      - private_reasoning: Low effort and a cash reward would suit me.
+        tool_calls:
+          - {tool: propose_contribution, args: {action: enrol, text: Trainee could enrol if there is something in it}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: enrol
+              text: Trainee enrols and uses course credits after the recruiter's offer
+              benefit: Cash reward for using credits
+              flows: [{from: trainee, to: provider, type: value, description: Course credits used for the enrolment}]
+          - tool: propose_contribution
+            args: {proposal_id: P1, action: confirm_attendance_without_attending, text: Trainee confirms attendance for sessions not attended}
+    R3:
+      - tool_calls: [{tool: accept, args: {proposal_id: P1}}]
+    R4:
+      - tool_calls: [{tool: accept, args: {proposal_id: P1}}]
+  provider:
+    R1:
+      - tool_calls:
+          - {tool: propose_contribution, args: {action: engage_recruiter, text: Provider could use a recruiter to find enrolments}}
+    R2:
+      - tool_calls:
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              objective_id: OBJ-1
+              action: engage_recruiter
+              text: Provider engages a recruiter to bring in enrolments
+              cites: [{source_id: S3, span: mentioned a cash reward}]
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: offer_cash_for_enrolment
+              text: Recruiter offers a cash reward for using credits and suggests attendance is optional
+              benefit: Funded enrolments and fee claims
+              flows: [{from: provider, to: trainee, type: money, description: Cash reward paid for the enrolment}]
+              cites: [{source_id: S3, span: use her credits}]
+          - tool: propose_contribution
+            args: {proposal_id: P1, action: record_attendance, text: Provider records attendance using a prepared sign-in template}
+          - tool: propose_contribution
+            args:
+              proposal_id: P1
+              action: submit_course_claim
+              text: Provider submits the course claim
+              flows: [{from: provider, to: claims_system, type: documents, description: Attendance record submitted with the claim}]
+          - tool: send_message
+            args: {channel: private, to: [trainee], proposal_ref: P1, body: "Proposal P1: you enrol and confirm attendance; a cash reward follows. Reply by accepting P1."}
+    R3: []
+    R4:
+      - tool_calls:
+          - tool: propose_contribution
+            args: {proposal_id: P1, revises: P1.3, action: record_attendance, text: Provider records attendance for training that did not take place}
+  employer:
+    R1: [{tool_calls: []}]
+    R2: [{tool_calls: []}]
+    R3:
+      - tool_calls: [{tool: decline_all, args: {}}]
+review:
+  default:
+    verdicts:
+      - {action: engage_recruiter, source_id: S3, verdict: supports}
+      - {action: offer_cash_for_enrolment, source_id: S3, verdict: supports}
+    screening_signals:
+      - Clusters of enrolments linked to one recruiter with unusually low course engagement
+    data_needed:
+      - Enrolment records with the recruiter or referral source
+      - Attendance records alongside trainee confirmations and claim submissions
