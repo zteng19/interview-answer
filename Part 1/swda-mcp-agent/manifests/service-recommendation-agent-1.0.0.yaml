@@ -1,0 +1,15 @@
+# Submitted by CI with every agent version (Part 1B, section 3.10 "Agent manifest").
+agent_id: service-recommendation-agent
+version: 1.0.0
+owner: dev.koh
+purpose: Classify a service request and recommend eligible programmes for an officer to review
+intended_users: [caseworker-app]
+data_classification: sensitive
+classifier_version: rules-v1
+prompt_version: null
+image_digest: sha256:223eefd583e2bff8332506f536555cbe93eca021c6e7bc9b9f51c47a0378f1e5
+requested_tools: [classify_request, lookup_programmes, check_eligibility]
+allowed_clients: [caseworker-app]
+expires_on: '2027-05-01'
+evidence:
+  - out/evidence/service-recommendation-agent-1.0.0.json

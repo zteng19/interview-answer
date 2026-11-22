@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: swda-mcp-agent
+Version: 1.0.0
+Summary: SWDA Part 1C PoC: Service Recommendation Agent exposed through a governed MCP interface
+Requires-Python: >=3.10
+Requires-Dist: mcp<2,>=1.26
+Requires-Dist: pydantic<3,>=2.6
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: anyio>=4
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+Requires-Dist: mypy>=1.10; extra == "dev"
+Requires-Dist: types-PyYAML; extra == "dev"

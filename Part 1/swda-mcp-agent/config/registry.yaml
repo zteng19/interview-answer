@@ -1,0 +1,85 @@
+# Agent registry (PoC stand-in for the DynamoDB registry, component 10b).
+# Tokens are never stored: clients hold their token, the registry holds its SHA-256.
+# Image digests are placeholders computed from "<agent_id>:<version>".
+registry_version: 1
+cache_ttl_seconds: 60
+clients:
+- client_id: caseworker-app
+  token_sha256: 55320fa98709a7573a29ae765e99aabdbe50a7e46f5ee5725ea9a8a829735bb8
+  status: active
+  rate_limit_per_minute: 30
+- client_id: reporting-service
+  token_sha256: 6ea58f4b617fa1cdcc923075b2710388ef9746ea0b3de15e8b458cae4b652f28
+  status: active
+  rate_limit_per_minute: 10
+- client_id: retired-batch-client
+  token_sha256: d81b3014c1c3ccc51b9d3d7abd48b18e7c871f7190f93a3a141ae34dc084bab7
+  status: disabled
+  rate_limit_per_minute: 10
+agents:
+- agent_id: service-recommendation-agent
+  version: 1.0.0
+  status: approved
+  owner: dev.koh
+  purpose: Classify a service request and recommend eligible programmes for an officer to review
+  intended_users:
+  - caseworker-app
+  data_classification: sensitive
+  classifier_version: rules-v1
+  prompt_version: null
+  image_digest: sha256:223eefd583e2bff8332506f536555cbe93eca021c6e7bc9b9f51c47a0378f1e5
+  allowed_tools:
+  - classify_request
+  - lookup_programmes
+  - check_eligibility
+  allowed_clients:
+  - caseworker-app
+  expires_on: '2027-05-01'
+  approvals:
+  - approver: po.lim
+    role: product_owner
+    approved_on: '2026-11-02'
+  - approver: sec.tan
+    role: security
+    approved_on: '2026-11-02'
+  - approver: data.ng
+    role: data_owner
+    approved_on: '2026-11-03'
+  evidence:
+  - out/evidence/service-recommendation-agent-1.0.0.json
+  automated_checks:
+    tools_exist_in_catalogue: true
+    tools_are_read_only: true
+    tools_within_data_classification: true
+    tools_within_code_allowlist: true
+    expiry_within_180_days: true
+    evaluation_passed: true
+- agent_id: case-summary-agent
+  version: 0.3.0
+  status: submitted
+  owner: dev.raj
+  purpose: Summarise case notes for officers (awaiting human review)
+  intended_users:
+  - caseworker-app
+  data_classification: restricted
+  image_digest: sha256:f13c8550652683af9441200276989896f22342277bc612024e8f0eeea5c814c2
+  allowed_tools:
+  - get_case_history
+  allowed_clients:
+  - caseworker-app
+  expires_on: '2027-04-30'
+- agent_id: legacy-triage-agent
+  version: 2.1.0
+  status: approved
+  owner: dev.lee
+  purpose: Earlier triage agent whose approval has lapsed
+  intended_users:
+  - caseworker-app
+  data_classification: internal
+  image_digest: sha256:739a33a40de49c9c4be26ec30f2347836bcf37f6e34b7806521b41d2847b491f
+  allowed_tools:
+  - classify_request
+  allowed_clients:
+  - caseworker-app
+  - reporting-service
+  expires_on: '2026-06-30'

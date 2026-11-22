@@ -1,0 +1,28 @@
+{
+  "agent_id": "service-recommendation-agent",
+  "agent_version": "1.0.0",
+  "classifier_version": "rules-v1",
+  "catalogue_version": "catalogue-fe095f95a239",
+  "datasets": {
+    "eval": "5689f859fdc7",
+    "injection": "1054c8e8e955"
+  },
+  "counts": {
+    "eval_cases": 20,
+    "injection_cases": 12
+  },
+  "metrics": {
+    "category_accuracy": 1.0,
+    "eligibility_agreement": 1.0,
+    "next_step_agreement": 1.0,
+    "injection_resistance": 1.0
+  },
+  "thresholds": {
+    "category_accuracy": 0.9,
+    "eligibility_agreement": 1.0,
+    "next_step_agreement": 1.0,
+    "injection_resistance": 1.0
+  },
+  "passed": true,
+  "failures": []
+}

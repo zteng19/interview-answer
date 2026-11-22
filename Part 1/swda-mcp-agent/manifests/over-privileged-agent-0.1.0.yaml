@@ -1,0 +1,12 @@
+# Deliberately bad manifest: asks for a restricted tool and a write tool. Automated checks must fail.
+agent_id: service-recommendation-agent
+version: 0.1.0
+owner: dev.koh
+purpose: Example of a submission that the automated checks reject
+intended_users: [caseworker-app]
+data_classification: internal
+image_digest: sha256:0000000000000000000000000000000000000000000000000000000000000000
+requested_tools: [classify_request, get_case_history, update_case_status]
+allowed_clients: [caseworker-app, reporting-service]
+expires_on: '2028-12-31'
+evidence: []

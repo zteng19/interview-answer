@@ -1,0 +1,172 @@
+[
+  {
+    "request_id": "REQ-1001",
+    "correlation_id": "8eb9a58d-43c2-4575-b062-da5c0700c2cc",
+    "agent_id": "service-recommendation-agent",
+    "agent_version": "1.0.0",
+    "classifier_version": "rules-v1",
+    "catalogue_version": "catalogue-fe095f95a239",
+    "category": "employment_support",
+    "confidence": 1.0,
+    "matched_keywords": [
+      "find a job",
+      "job",
+      "retrenched"
+    ],
+    "recommendations": [
+      {
+        "rank": 1,
+        "programme_id": "EMP-001",
+        "name": "Career Restart Coaching (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      },
+      {
+        "rank": 2,
+        "programme_id": "EMP-002",
+        "name": "Job Match Placement Service (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      },
+      {
+        "rank": 3,
+        "programme_id": "EMP-003",
+        "name": "Mature Worker Re-employment Grant (synthetic)",
+        "eligible": false,
+        "reasons": [
+          "AGE_BELOW_MIN"
+        ]
+      },
+      {
+        "rank": 4,
+        "programme_id": "EMP-004",
+        "name": "Youth Job Starter (synthetic)",
+        "eligible": false,
+        "reasons": [
+          "AGE_ABOVE_MAX"
+        ]
+      }
+    ],
+    "next_step": "recommend",
+    "flags": [],
+    "disclaimer": "Decision support only. An officer makes the final decision."
+  },
+  {
+    "request_id": "REQ-1002",
+    "correlation_id": "6d76d0aa-a5f7-40b0-a331-49277e68f154",
+    "agent_id": "service-recommendation-agent",
+    "agent_version": "1.0.0",
+    "classifier_version": "rules-v1",
+    "catalogue_version": "catalogue-fe095f95a239",
+    "category": "eldercare_support",
+    "confidence": 1.0,
+    "matched_keywords": [
+      "caregiver",
+      "dementia",
+      "elderly parent"
+    ],
+    "recommendations": [
+      {
+        "rank": 1,
+        "programme_id": "ELD-001",
+        "name": "Caregiver Support Grant (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      },
+      {
+        "rank": 2,
+        "programme_id": "ELD-002",
+        "name": "Senior Day Care Subsidy (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      }
+    ],
+    "next_step": "recommend",
+    "flags": [],
+    "disclaimer": "Decision support only. An officer makes the final decision."
+  },
+  {
+    "request_id": "REQ-1003",
+    "correlation_id": "dd461a15-cc1b-4ca0-9700-64783e07e983",
+    "agent_id": "service-recommendation-agent",
+    "agent_version": "1.0.0",
+    "classifier_version": "rules-v1",
+    "catalogue_version": "catalogue-fe095f95a239",
+    "category": "financial_assistance",
+    "confidence": 1.0,
+    "matched_keywords": [
+      "bills",
+      "cannot pay"
+    ],
+    "recommendations": [
+      {
+        "rank": 1,
+        "programme_id": "FIN-001",
+        "name": "Short-term Household Assistance (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      },
+      {
+        "rank": 2,
+        "programme_id": "FIN-002",
+        "name": "Utilities Support Voucher (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      },
+      {
+        "rank": 3,
+        "programme_id": "FIN-003",
+        "name": "Rental Arrears Relief (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      }
+    ],
+    "next_step": "refer_to_officer",
+    "flags": [
+      "FORCE_DECISION",
+      "IGNORE_INSTRUCTIONS"
+    ],
+    "disclaimer": "Decision support only. An officer makes the final decision."
+  },
+  {
+    "request_id": "REQ-1004",
+    "correlation_id": "49ba5ad0-bb29-4567-9c50-b26a4fbd917e",
+    "agent_id": "service-recommendation-agent",
+    "agent_version": "1.0.0",
+    "classifier_version": "rules-v1",
+    "catalogue_version": "catalogue-fe095f95a239",
+    "category": "general_enquiry",
+    "confidence": 0.0,
+    "matched_keywords": [],
+    "recommendations": [
+      {
+        "rank": 1,
+        "programme_id": "GEN-001",
+        "name": "Social Service Office Referral (synthetic)",
+        "eligible": true,
+        "reasons": [
+          "ALL_RULES_MET"
+        ]
+      }
+    ],
+    "next_step": "refer_to_officer",
+    "flags": [
+      "LOW_CONFIDENCE"
+    ],
+    "disclaimer": "Decision support only. An officer makes the final decision."
+  }
+]

@@ -1,0 +1,17 @@
+programme_id,name,category,priority,min_age,max_age,residency_allowed,employment_allowed,max_per_capita_income,active
+EMP-001,Career Restart Coaching (synthetic),employment_support,1,21,67,citizen|pr,unemployed|self_employed,,true
+EMP-002,Job Match Placement Service (synthetic),employment_support,2,18,70,citizen|pr,unemployed|employed|self_employed,,true
+EMP-003,Mature Worker Re-employment Grant (synthetic),employment_support,3,50,70,citizen,unemployed,1500,true
+EMP-004,Youth Job Starter (synthetic),employment_support,4,16,25,citizen|pr,unemployed|student,,true
+SKL-001,Mid-career Skills Credit (synthetic),skills_training,1,40,67,citizen,employed|unemployed|self_employed,,true
+SKL-002,Digital Skills Bootcamp (synthetic),skills_training,2,18,67,citizen|pr,employed|unemployed|self_employed|student,,true
+SKL-003,Training Allowance Top-up (synthetic),skills_training,3,21,67,citizen,unemployed,1200,true
+FIN-001,Short-term Household Assistance (synthetic),financial_assistance,1,18,120,citizen|pr,unemployed|employed|self_employed|retired,800,true
+FIN-002,Utilities Support Voucher (synthetic),financial_assistance,2,18,120,citizen,unemployed|employed|self_employed|retired|student,1000,true
+FIN-003,Rental Arrears Relief (synthetic),financial_assistance,3,21,120,citizen|pr,unemployed|employed|self_employed|retired,900,true
+FIN-004,Emergency Cash Grant (legacy) (synthetic),financial_assistance,4,18,120,citizen,unemployed,600,false
+CHD-001,Infant and Childcare Subsidy (synthetic),childcare_support,1,18,70,citizen|pr,employed|self_employed|student,2500,true
+CHD-002,Student Care Fee Assistance (synthetic),childcare_support,2,18,70,citizen|pr,employed|unemployed|self_employed,1500,true
+ELD-001,Caregiver Support Grant (synthetic),eldercare_support,1,18,120,citizen|pr,employed|unemployed|self_employed|retired,2800,true
+ELD-002,Senior Day Care Subsidy (synthetic),eldercare_support,2,18,120,citizen|pr,employed|unemployed|self_employed|retired|student,2000,true
+GEN-001,Social Service Office Referral (synthetic),general_enquiry,1,0,120,citizen|pr|other,employed|unemployed|self_employed|student|retired,,true

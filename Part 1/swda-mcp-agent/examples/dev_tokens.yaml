@@ -1,0 +1,6 @@
+# LOCAL DEMO CREDENTIALS ONLY. Synthetic, not secrets, valid only against config/registry.yaml.
+# In production clients obtain short-lived OAuth2 tokens from Amazon Cognito (component 10c)
+# and nothing like this file exists.
+caseworker-app: dev-caseworker-app-token
+reporting-service: dev-reporting-service-token
+retired-batch-client: dev-disabled-client-token

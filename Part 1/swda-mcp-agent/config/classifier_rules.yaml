@@ -1,0 +1,54 @@
+rules_version: rules-v1
+default_category: general_enquiry
+categories:
+  employment_support:
+    keywords:
+      lost my job: 3
+      retrenched: 3
+      unemployed: 3
+      job search: 3
+      find a job: 3
+      looking for work: 3
+      career coaching: 2
+      job: 1
+      interview: 1
+      resume: 1
+  skills_training:
+    keywords:
+      course: 2
+      training: 2
+      upskill: 3
+      reskill: 3
+      certification: 2
+      learn new skills: 3
+      diploma: 1
+  financial_assistance:
+    keywords:
+      cannot pay: 3
+      can't pay: 3
+      bills: 2
+      rent arrears: 3
+      debt: 2
+      financial help: 3
+      financial assistance: 3
+      money: 1
+      utilities: 2
+  childcare_support:
+    keywords:
+      childcare: 3
+      infant care: 3
+      preschool: 2
+      kindergarten: 2
+      child care: 3
+      my baby: 2
+      student care: 2
+  eldercare_support:
+    keywords:
+      elderly parent: 3
+      eldercare: 3
+      caregiver: 2
+      nursing home: 3
+      dementia: 2
+      day care centre for seniors: 3
+      aged mother: 2
+      aged father: 2
